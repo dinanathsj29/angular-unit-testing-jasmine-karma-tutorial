@@ -61,7 +61,7 @@ Topics included/covered
     - 1.4. [Is it a replacement for manual testing?](#14-is-it-a-replacement-for-manual-testing)
     - 1.5. [Codebase to develope](#15-codebase-to-develope)
     - 1.6. [Why to Test?](#16-why-to-test)
-    - 1.7. [Benefits/Advantages of Automated Testing](#17-benefits/advantages-of-automated-testing)
+    - 1.7. [Benefits/Advantages of Automated Testing](#17-benefits-advantages-of-automated-testing)
     - 1.8. [Do I need Automated testing?](#18-do-i-need-automated-testing)
     - 1.9. [First code or write the test?](#19-first-code-or-write-the-test)
     - 1.10. [What to test?](#110-what-to-test)
@@ -180,7 +180,7 @@ Its fact that implementing the feature with unit test/testing will take more tim
  </figure>
 </p>
 
-1.6. Why Test
+1.6. Why to Test
 ---------------------
 Testing is important and done to:
 - Get an error if code break
@@ -193,7 +193,7 @@ Testing is important and done to:
 - Break up complex code dependencies and make our code easier
 - Improve code/better code quality
 
-1.7. Benefits/Advantages of Automated Testing
+1.7. Benefits-Advantages of Automated Testing
 ---------------------
 - It helps to catch defects/bugs before releasing your application/product/software
 - With Automated Testing, we produce software with fewer bugs and of better quality and more reliable
