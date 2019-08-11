@@ -145,7 +145,7 @@ With Automated testing, we have to `write Production Code as well as Unit Test C
 
 <p>
  <figure>
- &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/1.5.1-codebase-to-develop.png" alt="Codebase to develop" title="Codebase to develop" width="1000" />
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/1.5.1-codebase-to-develop.png" alt="Codebase to develop" title="Codebase to develop" width="800" />
  <figcaption>&nbsp;&nbsp;&nbsp; Image - Codebase to develop (Production + Test Code)</figcaption>
  </figure>
 </p>
@@ -156,7 +156,7 @@ Its fact that implementing the feature with unit test/testing will take more tim
 
 <p>
  <figure>
- &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/1.5.2-production-development-cost.png" alt="Production development cost" title="Production development cost" width="1000" />
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/1.5.2-production-development-cost.png" alt="Production development cost" title="Production development cost" width="800" />
  <figcaption>&nbsp;&nbsp;&nbsp; Image - Production development cost</figcaption>
  </figure>
 </p>
@@ -175,7 +175,7 @@ Its fact that implementing the feature with unit test/testing will take more tim
 
 <p>
  <figure>
- &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/1.5.3-manual-automated-testing-cost.png" alt="Manual vs Automated testing cost" title="Manual vs Automated testing cost" width="1000" />
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/1.5.3-manual-automated-testing-cost.png" alt="Manual vs Automated testing cost" title="Manual vs Automated testing cost" width="800" />
  <figcaption>&nbsp;&nbsp;&nbsp; Image - Manual vs Automated testing cost</figcaption>
  </figure>
 </p>
