@@ -57,14 +57,14 @@ Topics included/covered
 1. [Introduction to Automated testing](#1-introduction-to-automated-testing)
     - 1.1. [Common questions in mind of developers](#11-common-questions-in-mind-of-developers)
     - 1.2. [Developers thoughts](#12-developers-thoughts)
-    - 1.3. [What is automated testing?](#13-what-is-automated-testing?)
-    - 1.4. [Is it a replacement for manual testing?](#14-is-it-a-replacement-for-manual-testing?)
+    - 1.3. [What is automated testing?](#13-what-is-automated-testing)
+    - 1.4. [Is it a replacement for manual testing?](#14-is-it-a-replacement-for-manual-testing)
     - 1.5. [Codebase to develope](#15-codebase-to-develope)
-    - 1.6. [Why to Test?](#16-why-to-test?)
+    - 1.6. [Why to Test?](#16-why-to-test)
     - 1.7. [Benefits/Advantages of Automated Testing](#17-benefits/advantages-of-automated-testing)
-    - 1.8. [Do I need Automated testing?](#18-do-i-need-automated-testing?)
-    - 1.9. [First code or write the test?](#19-first-code-or-write-the-test?)
-    - 1.10. [What to test?](#110-what-to-test?)
+    - 1.8. [Do I need Automated testing?](#18-do-i-need-automated-testing)
+    - 1.9. [First code or write the test?](#19-first-code-or-write-the-test)
+    - 1.10. [What to test?](#110-what-to-test)
 
 1 Introduction to Automated testing
 =====================
@@ -88,7 +88,7 @@ Topics included/covered
 - Don't know how to work with Testing
 - No clear idea/picture what to test 
 
-1.3. What is automated testing?
+1.3. What is automated testing
 ---------------------
 
 > **Automated testing** 
@@ -96,7 +96,7 @@ Topics included/covered
 - Automated testing is `process/practice of writing code to test our code`, then run tests in an automated fashion
 - Automated testing is performed by writing test cases/scripts
 
-1.4. Is it a replacement for manual testing?
+1.4. Is it a replacement for manual testing
 ---------------------
 1.4. Development and Testing Life cycle
 ---------------------
@@ -180,7 +180,7 @@ Its fact that implementing the feature with unit test/testing will take more tim
  </figure>
 </p>
 
-1.6. Why Test?
+1.6. Why Test
 ---------------------
 Testing is important and done to:
 - Get an error if code break
@@ -204,7 +204,7 @@ Testing is important and done to:
 - Reveals mistakes in Design/Development (If some features are difficult/complex to write test cases - simplify functionality and logic)
 - In the longer run, Automated Unit Testing acts as documentation fo application functionality
 
-1.8. Do I need Automated testing?
+1.8. Do I need Automated testing
 ---------------------
 1.8. Real-time testing scenarios
 ---------------------
@@ -223,13 +223,13 @@ Testing is important and done to:
 - Companies who develop research-based/experimental products (R & D projects)
 - Software/application in which requirements changes frequently
 
-1.9. First code or write the test?
+1.9. First code or write the test
 ---------------------
 1.9. Do I write Test first (TDD - Test Driven Development) or application code first?
 ---------------------
 Its all depends on TIME, MONEY and need/requirements - usually, developers and companies do application development first then go for (TDD - Test Driven Development) and or BDD (Behavior Driven Development).
 
-1.10. What to test?
+1.10. What to test
 ---------------------
 We can write Angular tests cases for testing Functions, Logics, Events, multiple types of Components, Attributes-Directives, Dependencies, Routers- Navigation, and services. 
 
