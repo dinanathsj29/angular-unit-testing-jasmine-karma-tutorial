@@ -60,12 +60,18 @@ Topics included/covered
     - 1.3. [What is automated testing?](#13-what-is-automated-testing)
     - 1.4. [Is it a replacement for manual testing?](#14-is-it-a-replacement-for-manual-testing)
     - 1.5. [Codebase to develope](#15-codebase-to-develope)
-    - 1.6. [Why to Test?](#16-why-to-test)
+    - 1.6. [Why Test?](#16-why-test)
     - 1.7. [Benefits/Advantages of Automated Testing](#17-benefits-advantages-of-automated-testing)
     - 1.8. [Do I need Automated testing?](#18-do-i-need-automated-testing)
     - 1.9. [First code or write the test?](#19-first-code-or-write-the-test)
     - 1.10. [What to test?](#110-what-to-test)
 
+2. [Different types of tests](#2-different-types-of-tests)
+    - 2.1. [Unit Test](#21-unit-test)
+    - 2.2. [Integration Test](#22-integration-test)
+    - 2.3. [End-to-End or End-2-End (E2E) Test](#23-end-to-end-or-end-2-end-(e2e)-test)
+    - 2.4. [The testing pyramid](#24-the-testing-pyramid)
+    
 1 Introduction to Automated testing
 =====================
 
@@ -88,7 +94,7 @@ Topics included/covered
 - Don't know how to work with Testing
 - No clear idea/picture what to test 
 
-1.3. What is automated testing
+1.3. What is automated testing?
 ---------------------
 
 > **Automated testing** 
@@ -180,7 +186,7 @@ Its fact that implementing the feature with unit test/testing will take more tim
  </figure>
 </p>
 
-1.6. Why to Test
+1.6. Why Test
 ---------------------
 Testing is important and done to:
 - Get an error if code break
@@ -227,10 +233,72 @@ Testing is important and done to:
 ---------------------
 1.9. Do I write Test first (TDD - Test Driven Development) or application code first?
 ---------------------
-Its all depends on TIME, MONEY and need/requirements - usually, developers and companies do application development first then go for (TDD - Test Driven Development) and or BDD (Behavior Driven Development).
+Its all depends on TIME, MONEY and need/requirements - usually, developers and companies first prefers to do application development then go for (TDD - Test Driven Development) and or BDD (Behavior Driven Development).
 
 1.10. What to test
 ---------------------
 We can write Angular tests cases for testing Functions, Logics, Events, multiple types of Components, Attributes-Directives, Dependencies, Routers- Navigation, and services. 
 
+2 Different types of tests
+=====================
+There are different ways/types to test our application code. In Angular context, there are following types of test: `isolated and shallow unit testing, integration tests between components and UI/E2E tests, which can be functional and visual regression testing`. In general, we have 3 types of tests as given below:
+1. Unit Test
+2. Integration Test
+3. End-to-end Test
+
+Let's go through each testing type in detail and write the right tests for ensuring the application/testing work as expected.
+
+2.1. Unit Test
+---------------------
+
+- Testing a function in isolation (testing one function, test individual components of the system) 
+- Test an individual component `in isolation, without external resources` (e.g. file system, server, database, API endpoints, etc.)
+- In Angular terms/context `testing only component class` file without any template/view, with fake services and fake routers
+- **<u>Coverage</u>** - Small Unit/chunk of code to test
+- **<u>Complexity</u>** - Easier to write
+- **<u>Time/Duration</u>** - Super Fast, takes less time
+- **<u>Frequency</u>** - Write more/as much as you can (Hundreds)
+- **<u>Funtionality Testing Confidence</u>** - Does not test the functionality of the application in detail, not give us much confidence about functionality
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/2.1.1-unit-test.png" alt="Unit Testing" title="Unit Testing" width="800" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Unit Testing</figcaption>
+ </figure>
+</p>
+
+2.2. Integration Test
+---------------------
+- If any Unit testing depends on external resources like databases, networks, and APIs, then it is not a unit test, it's an Integration Test
+- Testing a Component with Template interaction, dependencies (testing a function that calls and depends on another function)
+- In Angular terms/context `testing component along with template (component + template)`, with fake services and fake routers
+- **<u>Coverage</u>** - Test a component `with external resources` (e.g. file system, server, database, API endpoints etc.)
+- **<u>Complexity</u>** - Little complex as we need to deal with dependency injection
+- **<u>Time/Duration</u>** - Little time consuming
+- **<u>Frequency</u>** - Write a good couple of (Tens)
+- **<u>Funtionality Testing Confidence</u>** - Give us much confidence about functionality
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/2.1.2-integration-test.png" alt="Integration Testing" title="Integration Testing" width="800" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Integration Testing</figcaption>
+ </figure>
+</p>
+
+2.3. End-to-End or End-2-End (E2E) Test
+---------------------
+
+- Test an entire application as a whole including function, user interaction, service api calls and complete functionality
+- `Testing and checking application from launching in browser till individual functinality, Full flow (validating a DOM after a click)`
+- **<u>Coverage</u>** - Test whole app functionality, get more confidence about functinality
+- **<u>Complexity</u>** - Complex
+- **<u>Time/Duration</u>** - Pretty time consuming, Tests are very slow
+- **<u>Frequency</u>** - Write a few (1,2 or so)
+- **<u>Funtionality Testing Confidence</u>** - Very fragile (can get broken easily) if any changes in template or component
+
+2.4. The testing pyramid
+---------------------
+The testing thumb-rule/testing pyramid says that: `75-80 % of the tests should be unit tests, 15-20 % is integration tests and 5 % is End-2-End UI tests`, overall depends on companies to companies, requirements to requirements.
+
+> **Note**: Write more Unit and Integration Test and few/less End-to-End tests only for key functionalities
 
