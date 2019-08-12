@@ -69,7 +69,7 @@ Topics included/covered
 2. [Different types of tests](#2-different-types-of-tests)
     - 2.1. [Unit Test](#21-unit-test)
     - 2.2. [Integration Test](#22-integration-test)
-    - 2.3. [End-to-End or End-2-End (E2E) Test](#23-end-to-end-or-end-2-end-(e2e)-test)
+    - 2.3. [End-to-End or End-2-End or E2E Test](#23-end-to-end-or-end-2-end-or-e2e-test)
     - 2.4. [The testing pyramid](#24-the-testing-pyramid)
     
 1 Introduction to Automated testing
@@ -285,8 +285,7 @@ Let's go through each testing type in detail and write the right tests for ensur
  </figure>
 </p>
 
-2.3. End-to-End or End-2-End (E2E) Test
----------------------
+2.3. End-to-End or End-2-End or E2E Test
 
 - Test an entire application as a whole including function, user interaction, service api calls and complete functionality
 - `Testing and checking application from launching in browser till individual functinality, Full flow (validating a DOM after a click)`
