@@ -71,7 +71,12 @@ Topics included/covered
     - 2.2. [Integration Test](#22-integration-test)
     - 2.3. [End-to-End or End-2-End or E2E Test](#23-end-to-end-test)
     - 2.4. [The testing pyramid](#24-the-testing-pyramid)
-    
+ 
+3. [The Angular Testing Tools-Toolchain](#3-the-angular-testing-tools-toolchain)
+    - 3.1. [Testing Tool categories](#31-testing-tool-categories)
+    - 3.2. [Testing Tools](#32-testing-tools)
+
+
 1 Introduction to Automated testing
 =====================
 
@@ -107,7 +112,7 @@ Topics included/covered
 1.4. Development and Testing Life cycle
 ---------------------
 
-Both Manual Testing & Automated Testing have their own advantages and disadvantages. 
+Both Manual Testing & Automated Testing have their advantages and disadvantages. 
 - For smaller applications, Manual Testing is beneficial at the same time 
 - Large enterprise applications Automated Testing play an important role 
 - Some project/software application (in which requirements changes frequently, R & D Projects) Manual Testing is the best option
@@ -151,7 +156,7 @@ With Automated testing, we have to `write Production Code as well as Unit Test C
 
 <p>
  <figure>
- &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/1.5.1-codebase-to-develop.png" alt="Codebase to develop" title="Codebase to develop" width="800" />
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/1.5.1-codebase-to-develop.png" alt="Codebase to develop" title="Codebase to develop" width="600" />
  <figcaption>&nbsp;&nbsp;&nbsp; Image - Codebase to develop (Production + Test Code)</figcaption>
  </figure>
 </p>
@@ -162,7 +167,7 @@ Its fact that implementing the feature with unit test/testing will take more tim
 
 <p>
  <figure>
- &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/1.5.2-production-development-cost.png" alt="Production development cost" title="Production development cost" width="800" />
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/1.5.2-production-development-cost.png" alt="Production development cost" title="Production development cost" width="600" />
  <figcaption>&nbsp;&nbsp;&nbsp; Image - Production development cost</figcaption>
  </figure>
 </p>
@@ -181,7 +186,7 @@ Its fact that implementing the feature with unit test/testing will take more tim
 
 <p>
  <figure>
- &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/1.5.3-manual-automated-testing-cost.png" alt="Manual vs Automated testing cost" title="Manual vs Automated testing cost" width="800" />
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/1.5.3-manual-automated-testing-cost.png" alt="Manual vs Automated testing cost" title="Manual vs Automated testing cost" width="600" />
  <figcaption>&nbsp;&nbsp;&nbsp; Image - Manual vs Automated testing cost</figcaption>
  </figure>
 </p>
@@ -241,10 +246,10 @@ We can write Angular tests cases for testing Functions, Logics, Events, multiple
 
 2 Different types of tests
 =====================
-There are different ways/types to test our application code. In Angular context, there are following types of test: `isolated and shallow unit testing, integration tests between components and UI/E2E tests, which can be functional and visual regression testing`. In general, we have 3 types of tests as given below:
+There are different ways/types to test our application code. In Angular context, there are following types of test: `isolated and shallow unit testing (without any custom tags), integration tests between components and UI/E2E tests, which can be functional and visual regression testing`. In general, we have 3 types of tests as given below:
 1. Unit Test
 2. Integration Test
-3. End-to-end Test
+3. End-to-end Test (Functional Testing)
 
 Let's go through each testing type in detail and write the right tests for ensuring the application/testing work as expected.
 
@@ -260,9 +265,14 @@ Let's go through each testing type in detail and write the right tests for ensur
 - **<u>Frequency</u>** - Write more/as much as you can (Hundreds)
 - **<u>Funtionality Testing Confidence</u>** - Does not test the functionality of the application in detail, not give us much confidence about functionality
 
+> **Note**:
+ - To perform unit testing for application code, we need to develop a separate program which executes each unit of the software independently, providing proper input data from the source and then checking the output result against the expected results
+ - Usually, a unit testing program is written with the same programming language in which the actual program/code-logic is developed; e.g. if we develop a program in C#/Java/JavaScript, then we need to develop its related unit testing program in C#/Java/JavaScript respectively
+
+
 <p>
  <figure>
- &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/2.1.1-unit-test.png" alt="Unit Testing" title="Unit Testing" width="800" />
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/2.1.1-unit-test.png" alt="Unit Testing" title="Unit Testing" width="600" />
  <figcaption>&nbsp;&nbsp;&nbsp; Image - Unit Testing</figcaption>
  </figure>
 </p>
@@ -280,7 +290,7 @@ Let's go through each testing type in detail and write the right tests for ensur
 
 <p>
  <figure>
- &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/2.1.2-integration-test.png" alt="Integration Testing" title="Integration Testing" width="800" />
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/2.1.2-integration-test.png" alt="Integration Testing" title="Integration Testing" width="600" />
  <figcaption>&nbsp;&nbsp;&nbsp; Image - Integration Testing</figcaption>
  </figure>
 </p>
@@ -289,6 +299,7 @@ Let's go through each testing type in detail and write the right tests for ensur
 ---------------------
 2.3. End-to-End or End-2-End or E2E Test
 ---------------------
+
 - Test an entire application as a whole including function, user interaction, service api calls and complete functionality
 - `Testing and checking application from launching in browser till individual functinality, Full flow (validating a DOM after a click)`
 - **<u>Coverage</u>** - Test whole app functionality, get more confidence about functinality
@@ -303,3 +314,155 @@ The testing thumb-rule/testing pyramid says that: `75-80 % of the tests should b
 
 > **Note**: Write more Unit and Integration Test and few/less End-to-End tests only for key functionalities
 
+3 The Angular Testing Tools-Toolchain
+=====================
+
+3.1. Testing Tool categories
+---------------------
+Angular testing toolchain consist of various tools of different types/categories, which can perform unit testing on Angular Framework. Some of the tools categories mentioned below:
+
+- **<u>Assertion Library</u>**: 
+  - Define test cases, write testing logic, conditions
+  - Examples/Tools: Jasmine, Chai
+- **<u>Test Runner</u>**: 
+  - Execute our tests and summarize results 
+  - Examples/Tools: Karma, Mocha
+- **<u>End-to-End testing tools</u>**: 
+  - Perform complete Application test
+  - Examples/Tools: Protractor
+- **<u>Headless Browser</u>**: 
+  - Simultes browser interaction, execute tests in GUI-less browser
+  - Examples/Tools: Headless chrome, Puppeteer, PhantomJS 
+
+3.2. Testing Tools
+---------------------
+
+Here is the list of important tools used for Angular testing:
+
+1. Jasmine
+2. Karma
+3. Protractor
+4. PhantomJS
+5. Istanbul
+6. Chai
+7. Sinon
+8. Mocha
+9. Angular Testing Utilities
+
+<p>
+ <figure>
+ <img src="./_images-angular-unit-testing-jasmine-karma/3.2.1-jasmine-logo-1.png" alt="Jasmine - Assertion Library - Write Unit Test" title="Jasmine - Assertion Library - Write Unit Test" border="2" align="right" width="300"/>
+ </figure>
+</p>
+
+
+### 3.2.1. Jasmine
+
+- Jasmine is an `open source Behavior Driven Development (BDD) framework for testing JavaScript code, BDD is an important feature of Test Driven Development (TDD)`
+- Jasmine is the most popular JavaScript testing framework in the Angular community - core framework to write a unit test
+- Angular is built-in with Jasmine and Karma so it's pretty easy to get started with testing
+- Jasmine provides bunch of functions to write test, e.g. `describe()`, `it()` etc.
+- Dependency free and does not require a DOM (Document Object Model)
+- Website URL: https://jasmine.github.io/ 
+
+<p>
+ <figure>
+ <img src="./_images-angular-unit-testing-jasmine-karma/3.2.2-karma-logo-1.png" alt="Karma - A test runner" title="Karma - A test runner" border="2" align="right" width="300"/>
+ </figure>
+</p>
+
+### 3.2.2. Karma
+- A `test runner tool for running and executing unit test` while developing an Angular app
+- Karma is a direct product of the AngularJS team and default test runner for applications created with the Angular CLI
+- Shows the outcome of all test run whether to pass or fail
+- Karma allows us to generate various reports on the results
+- Increases developer productivity by showing/giving live results of tests
+- Karma is a tool which let's use Chrome, Firefox or provides headless browsers and run Jasmine tests inside of them
+- Website URL: https://karma-runner.github.io/latest/index.html
+
+<p>
+ <figure>
+ <img src="./_images-angular-unit-testing-jasmine-karma/3.2.3-protractor-logo-1.png" alt="Protractor - Write End-to-End test" title="Protractor - Write End-to-End test" border="2" align="right" width="300"/>
+ </figure>
+</p>
+
+### 3.2.3. Protractor
+- Protractor is an `End-to-End/End-2-End (E2E) behavior-driven testing framework` for Angular
+- It helps QA or Testers to write and run End-to-End/End-2-End (E2E) to test complete application flow
+- It Explores the app as users experience it
+- URL: https://www.protractortest.org/#/
+
+<p>
+ <figure>
+ <img src="./_images-angular-unit-testing-jasmine-karma/3.2.4-phantomjs-logo-2.png" alt="Phantomjs - Headless GUI-less Browser" title="Phantomjs - Headless GUI-less Browser" border="2" align="right" width="300"/>
+ </figure>
+</p>
+
+### 3.2.4. PhantomJS
+- PhantomJS is a `headless WebKit scriptable browser with a JavaScript API`
+- It has fast and native support for various web standards like DOM handling, CSS selector, JSON, Canvas, and SVG
+- PhantomJS - Scriptable Headless Browser, in simple terms we can say - PhantomJS is a web browser `without a graphical user interface`
+- PhantomJS can be used to take screenshots of websites, those screenshots can be rendered in different formats also
+- As we can use PhantomJS to load and manipulate a web page, it is perfect for carrying out page automation. This helps developers run a bunch of tests without ever having to open a web browser
+- **`PhantomJS development is suspended until further notice, PhantomJS is a discontinued headless browser used for automating web page interaction`**
+- URL: https://phantomjs.org/
+
+### 3.2.5. Istanbul
+- Angular uses Istanbul and Karma for built-in testing
+- `Istanbul is a Karma reporter` that uses the latest Istanbul 1.x APIs (with full source map support) to report coverage
+- URL: 
+ - https://www.npmjs.com/package/istanbul, 
+ - https://www.npmjs.com/package/karma-coverage-istanbul-reporter
+
+<p>
+ <figure>
+ <img src="./_images-angular-unit-testing-jasmine-karma/3.2.6-sinon-logo-1.jpg" alt="Sinonjs - Standalone test spies, stubs and mocks" title="Sinonjs - Standalone test spies, stubs and mocks" border="2" align="right" width="200" />
+ </figure>
+</p>
+
+### 3.2.6. Sinon
+- `Standalone test spies, stubs and mocks` for JavaScript (fake service/HTTP-API calls)
+- It works with any unit testing framework and has no external dependencies
+- **Installation command**: `npm install sinon`
+- Jasmine already consists of `spies, Mock`, just a thought from some community that Sinon.JS is better!
+- URL: https://sinonjs.org/ 
+
+<p>
+ <figure>
+ <img src="./_images-angular-unit-testing-jasmine-karma/3.2.7-chai-logo-1.png" alt="Chai - BDD/TDD Assertion Library - Write Unit Test" title="Chai - BDD/TDD Assertion Library - Write Unit Test" border="2" align="right" width="125" />
+ </figure>
+</p>
+
+### 3.2.7. Chai
+- `Chai is a BDD / TDD assertion library` for node and the browser that can be delightfully paired with any javascript testing framework
+- `Chai is an assertion library with some tasty syntax sugar` that can be paired with any other testing framework
+- Jasmine already uses a TDD style, so developers using Chai for its BDD interfaces, mainly through the use of `should` and `expect`
+- **Installation command**: `npm install chai`
+- URL: 
+ - https://www.chaijs.com/
+ - https://angular-2-training-book.rangle.io/testing/using-chai
+
+<p>
+ <figure>
+ <img src="./_images-angular-unit-testing-jasmine-karma/3.2.8-mocha-logo-1.png" alt="Mocha - A test runner" title="Mocha - A test runner" border="2" align="right" width="125" />
+ </figure>
+</p>
+
+### 3.2.8. Mocha
+- `A test runner tool for running and executing unit test` while developing an Angular app
+- Mocha is a testing framework that provides functions that are executed according to in a specific order, and that logs their results to the terminal window
+- Mocha makes synchronous and asynchronous testing simple and fun, also runs test serially, allowing for flexible and accurate reporting
+- **Installation command**: `npm install mocha`
+- URL: 
+ - https://mochajs.org/
+ - https://github.com/mochajs/mocha
+
+### 3.2.9. Angular Testing Utilities
+- Help us to create a test environment for the complete/whole application code 
+- Used to cover/test iteractions and functionality as a whole
+- Angular **`TestBed`** utility:
+ - The first and most important inbuilt testing utility which creates an angular testing module
+ - Used to test interaction between - component and its template or with different component
+ - **Package/Import statement** - `import { TestBed } from '@angular/core/testing';`
+
+In the current course/tutorial will mainly deal with `Jasmine (to write tests) & Karma (to run the test and get results/code coverage reports)`.
