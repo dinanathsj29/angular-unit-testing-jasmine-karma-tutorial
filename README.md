@@ -459,8 +459,8 @@ Here is the list of important tools used for Angular testing:
 - Help us to create a test environment for the complete/whole application code 
 - Used to cover/test iteractions and functionality as a whole
 - Angular **`TestBed`** utility:
- - The first and most important inbuilt testing utility which creates an angular testing module
- - Used to test interaction between - component and its template or with different component
- - **Package/Import statement** - `import { TestBed } from '@angular/core/testing';`
+  - The first and most important inbuilt testing utility which creates an angular testing module
+  - Used to test interaction between - component and its template or with different component
+  - **Package/Import statement** - `import { TestBed } from '@angular/core/testing';`
 
 In the current course/tutorial will mainly deal with `Jasmine (to write tests) & Karma (to run the test and get results/code coverage reports)`.
