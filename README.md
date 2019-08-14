@@ -76,7 +76,6 @@ Topics included/covered
     - 3.1. [Testing Tool categories](#31-testing-tool-categories)
     - 3.2. [Testing Tools](#32-testing-tools)
 
-
 1 Introduction to Automated testing
 =====================
 
@@ -355,7 +354,6 @@ Here is the list of important tools used for Angular testing:
  </figure>
 </p>
 
-
 ### 3.2.1. Jasmine
 
 - Jasmine is an `open source Behavior Driven Development (BDD) framework for testing JavaScript code, BDD is an important feature of Test Driven Development (TDD)`
@@ -411,8 +409,8 @@ Here is the list of important tools used for Angular testing:
 - Angular uses Istanbul and Karma for built-in testing
 - `Istanbul is a Karma reporter` that uses the latest Istanbul 1.x APIs (with full source map support) to report coverage
 - URL: 
- - https://www.npmjs.com/package/istanbul, 
- - https://www.npmjs.com/package/karma-coverage-istanbul-reporter
+  - https://www.npmjs.com/package/istanbul, 
+  - https://www.npmjs.com/package/karma-coverage-istanbul-reporter
 
 <p>
  <figure>
@@ -439,8 +437,8 @@ Here is the list of important tools used for Angular testing:
 - Jasmine already uses a TDD style, so developers using Chai for its BDD interfaces, mainly through the use of `should` and `expect`
 - **Installation command**: `npm install chai`
 - URL: 
- - https://www.chaijs.com/
- - https://angular-2-training-book.rangle.io/testing/using-chai
+  - https://www.chaijs.com/
+  - https://angular-2-training-book.rangle.io/testing/using-chai
 
 <p>
  <figure>
@@ -454,8 +452,8 @@ Here is the list of important tools used for Angular testing:
 - Mocha makes synchronous and asynchronous testing simple and fun, also runs test serially, allowing for flexible and accurate reporting
 - **Installation command**: `npm install mocha`
 - URL: 
- - https://mochajs.org/
- - https://github.com/mochajs/mocha
+  - https://mochajs.org/
+  - https://github.com/mochajs/mocha
 
 ### 3.2.9. Angular Testing Utilities
 - Help us to create a test environment for the complete/whole application code 
