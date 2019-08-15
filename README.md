@@ -83,7 +83,7 @@ Topics included/covered
 
 5. [Fundamentals of Unit Testing](#5-fundamentals-of-unit-testing)
     - 5.1. [Clean coding principles-practices](#51-clean-coding-principles-practices)
-    - 5.2. [Creating spec test file](#52-creating-spec-test-file)
+    - 5.2. [Creating a spec test file](#52-creating-a-spec-test-file)
     - 5.3. [How to write unit tests](#53-how-to-write-unit-tests)
     - 5.4. [Widely used Angular Unit Testing functions](#54-widely-used-angular-unit-testing-functions)
 
