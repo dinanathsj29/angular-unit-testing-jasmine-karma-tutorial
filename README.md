@@ -81,6 +81,12 @@ Topics included/covered
     - 4.2. [Core package-dependencies for testing](#42-core-package-dependencies-for-testing)
     - 4.3. [Core test setting-configuration files](#43-core-test-setting-configuration-files)
 
+5. [Fundamentals of Unit Testing](#5-fundamentals-of-unit-testing)
+    - 5.1. [Clean coding principles-practices](#51-clean-coding-principles-practices)
+    - 5.2. [Creating spec test file](#52-creating-spec-test-file)
+    - 5.3. [How to write unit tests](#53-how-to-write-unit-tests)
+    - 5.4. [Widely used Angular Unit Testing functions](#54-widely-used-angular-unit-testing-functions)
+
 1 Introduction to Automated testing
 =====================
 
@@ -553,3 +559,160 @@ Here are some of the core test settings/configuration files
   - The main entry point for unit tests and loads all the `.spec` and framework files 
   - The angular-cli configuration of karma uses the file `test.ts` as the entry point of the tests for the application 
   - This file is required by karma.conf.js and loads recursively all the .spec and framework files
+
+5 Fundamentals of Unit Testing
+=====================
+
+5.1. Clean coding principles-practices
+---------------------
+
+- Need to follow clean coding practices for writing code of development as well as test cases:
+ - Small functions/methods (10 lines of code or less)
+ - Proper naming conventions for variables and functions/methods
+ - Single responsibility principle (one function should do/perform one task only)
+
+5.2. Creating a spec test file
+---------------------
+
+1. Create a new Test file which should have `.spec.ts` extension
+ - Every class/component file should have its corresponding Unit Test case file with `.spec.ts` extension 
+ - `(e.g.: component = header.component.ts, unit testing/spec file = header.component.spec.ts)`
+2. Angular development team recommends putting unit test scripts alongside the files they are testing and using a `.spec` filename extension to mark it as a testing script (it's a Jasmine convention) 
+ - `header.component.ts, header.component.spec.ts` - should present under one folder
+3. Inside `.spec` test file write Unit Test cases as per logic/functionality mentioned and/or as per specific needs-requirements in the component class file
+4. To run the test cases, use Angular CLI command: `ng test`
+
+5.3. How to write unit tests
+---------------------
+
+### 5.3.1. Unit Test Syntax
+
+```
+// 1. describe - define test suite, Create a group of specs (often called a suite)
+
+describe('Textual description of the group', Function for Jasmine to invoke that will define inner suites specs () => {
+
+ // 2. it - define an individual unit test case
+ 
+ it('expectation from current test case', () => {
+
+ // 3. expect - Create an expectation/assertion for a spec, expect().matcherFunction();
+ 
+ expect(expectation).toBe(expected);
+
+ })
+
+})
+```
+
+### 5.3.2. Unit Test Code
+
+```
+// 1. describe - define test suite, Create a group of specs (often called a suite)
+
+describe('HeaderComponent', () => {
+
+ // 2. it - define an individual unit test case
+ 
+ it('should have header title', () => {
+
+ // 3. expect - Create an expectation for a spec/assertion, expect().matcherFunction();
+
+ let title = 'Welcome to Angular Testing';
+ 
+ expect(title).toEqual('Welcome to Angular Testing');
+
+ })
+
+})
+```
+
+5.4. Widely used Angular Unit Testing functions
+---------------------
+5.4. Widely used Angular Unit Testing functions / Structure of Unit Test Case:
+---------------------
+1. describe()
+2. it()
+3. expect()
+4. Various Matcher functions
+
+### 5.4.1. describe()
+- Define a test suite (group of related tests)
+- The `describe(string, function)` function defines what we call a Test Suite, a collection of individual Test Specs
+- e.g. 
+ ```
+ describe('test-suite-name', () => { 
+
+ }) 
+
+ OR 
+
+ describe('LoginComponent', () => { 
+
+ }) 
+ ```
+
+### 5.4.2. it()
+- Define a individual spec or test
+- The `it(string, function)` function defines an individual Test Spec, this contains one or more Test Expectations
+- With in `describe()`, we can `have one or more it() functions` - (group of related test/sepc)
+- Inside `it()` block `define test/code behavior` - expectation/assertion
+- e.g. 
+ ```
+ it('test-spec-name', () => { 
+
+ })
+
+ OR 
+
+ it('should have/show submit button', () => { 
+
+ }) 
+ ```
+
+### 5.4.3. expect()
+- Jasmine API for checking expectation/assertion
+- The `expect(actual)` expression is what we call an Expectation
+- Takes actual value as the parameter
+- Chained with a Matcher function
+- In conjunction with a `Matcher Function,` it describes an expected piece of behavior in the application
+- e.g. 
+ ```
+ expect(something).matcherFunction(value expected)
+
+ OR 
+ 
+ expect(var-name).toBe(value);
+ expect(var-name).toContain(value);
+ expect(var-name).toEqual(value);
+ expect(var-name).toBeNull(value);
+ expect(var-name).toBeTruthy(value);
+ expect(var-name).toBeFalsy(value);
+ ```
+
+### 5.4.4. Various Matcher functions() - Built-in matchers
+- The `matcher(expected)` expression is what we call a Matcher
+- It does a boolean comparison with the `expected` value passed in vs. the `actual` value passed to the `expect` function, if they are false the spec fails
+- It is responsible for reporting to Jasmine if the expectation is true or false, Jasmine will then pass or fail the spec/test
+- Jasmine comes with a rich set of pre-built matchers like:
+ ```
+ expect(array).toContain(member);
+ expect(fn).toThrow(string);
+ expect(fn).toThrowError(string);
+ expect(instance).toBe(instance);
+ expect(mixed).toBeDefined();
+ expect(mixed).toBeFalsy();
+ expect(mixed).toBeNull();
+ expect(mixed).toBeTruthy();
+ expect(mixed).toBeUndefined();
+ expect(mixed).toEqual(mixed);
+ expect(mixed).toMatch(pattern);
+ expect(number).toBeCloseTo(number, decimalPlaces);
+ expect(number).toBeGreaterThan(number);
+ expect(number).toBeLessThan(number);
+ expect(number).toBeNaN();
+ expect(spy).toHaveBeenCalled();
+ expect(spy).toHaveBeenCalledTimes(number);
+ expect(spy).toHaveBeenCalledWith(...arguments);
+ ```
+ 
