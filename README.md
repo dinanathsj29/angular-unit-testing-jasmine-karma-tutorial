@@ -76,6 +76,11 @@ Topics included/covered
     - 3.1. [Testing Tool categories](#31-testing-tool-categories)
     - 3.2. [Testing Tools](#32-testing-tools)
 
+4. [Setup Angular test](#4-setup-angular-test)
+    - 4.1. [Installing tools-utilities](#41-installing-tools-utilities)
+    - 4.2. [Core package-dependencies for testing](#42-core-package-dependencies-for-testing)
+    - 4.3. [Core test setting-configuration files](#43-core-test-setting-configuration-files)
+
 1 Introduction to Automated testing
 =====================
 
@@ -265,8 +270,8 @@ Let's go through each testing type in detail and write the right tests for ensur
 - **<u>Funtionality Testing Confidence</u>** - Does not test the functionality of the application in detail, not give us much confidence about functionality
 
 > **Note**:
- - To perform unit testing for application code, we need to develop a separate program which executes each unit of the software independently, providing proper input data from the source and then checking the output result against the expected results
- - Usually, a unit testing program is written with the same programming language in which the actual program/code-logic is developed; e.g. if we develop a program in C#/Java/JavaScript, then we need to develop its related unit testing program in C#/Java/JavaScript respectively
+  - To perform unit testing for application code, we need to develop a separate program which executes each unit of the software independently, providing proper input data from the source and then checking the output result against the expected results
+  - Usually, a unit testing program is written with the same programming language in which the actual program/code-logic is developed; e.g. if we develop a program in C#/Java/JavaScript, then we need to develop its related unit testing program in C#/Java/JavaScript respectively
 
 
 <p>
@@ -388,7 +393,7 @@ Here is the list of important tools used for Angular testing:
 - Protractor is an `End-to-End/End-2-End (E2E) behavior-driven testing framework` for Angular
 - It helps QA or Testers to write and run End-to-End/End-2-End (E2E) to test complete application flow
 - It Explores the app as users experience it
-- URL: https://www.protractortest.org/#/
+- Website URL: https://www.protractortest.org/#/
 
 <p>
  <figure>
@@ -403,14 +408,14 @@ Here is the list of important tools used for Angular testing:
 - PhantomJS can be used to take screenshots of websites, those screenshots can be rendered in different formats also
 - As we can use PhantomJS to load and manipulate a web page, it is perfect for carrying out page automation. This helps developers run a bunch of tests without ever having to open a web browser
 - **`PhantomJS development is suspended until further notice, PhantomJS is a discontinued headless browser used for automating web page interaction`**
-- URL: https://phantomjs.org/
+- Website URL: https://phantomjs.org/
 
 ### 3.2.5. Istanbul
 - Angular uses Istanbul and Karma for built-in testing
 - `Istanbul is a Karma reporter` that uses the latest Istanbul 1.x APIs (with full source map support) to report coverage
-- URL: 
-  - https://www.npmjs.com/package/istanbul, 
-  - https://www.npmjs.com/package/karma-coverage-istanbul-reporter
+- Website URL: 
+    - https://www.npmjs.com/package/istanbul, 
+    - https://www.npmjs.com/package/karma-coverage-istanbul-reporter
 
 <p>
  <figure>
@@ -423,7 +428,7 @@ Here is the list of important tools used for Angular testing:
 - It works with any unit testing framework and has no external dependencies
 - **Installation command**: `npm install sinon`
 - Jasmine already consists of `spies, Mock`, just a thought from some community that Sinon.JS is better!
-- URL: https://sinonjs.org/ 
+- Website URL: https://sinonjs.org/ 
 
 <p>
  <figure>
@@ -436,9 +441,9 @@ Here is the list of important tools used for Angular testing:
 - `Chai is an assertion library with some tasty syntax sugar` that can be paired with any other testing framework
 - Jasmine already uses a TDD style, so developers using Chai for its BDD interfaces, mainly through the use of `should` and `expect`
 - **Installation command**: `npm install chai`
-- URL: 
-  - https://www.chaijs.com/
-  - https://angular-2-training-book.rangle.io/testing/using-chai
+- Website URL: 
+    - https://www.chaijs.com/
+    - https://angular-2-training-book.rangle.io/testing/using-chai
 
 <p>
  <figure>
@@ -451,16 +456,100 @@ Here is the list of important tools used for Angular testing:
 - Mocha is a testing framework that provides functions that are executed according to in a specific order, and that logs their results to the terminal window
 - Mocha makes synchronous and asynchronous testing simple and fun, also runs test serially, allowing for flexible and accurate reporting
 - **Installation command**: `npm install mocha`
-- URL: 
-  - https://mochajs.org/
-  - https://github.com/mochajs/mocha
+- Website URL: 
+    - https://mochajs.org/
+    - https://github.com/mochajs/mocha
 
 ### 3.2.9. Angular Testing Utilities
 - Help us to create a test environment for the complete/whole application code 
 - Used to cover/test iteractions and functionality as a whole
-- Angular **`TestBed`** utility:
+- Angular **`TestBed`** utility / Angular Test Bed (ATB):
   - The first and most important inbuilt testing utility which creates an angular testing module
   - Used to test interaction between - component and its template or with different component
   - **Package/Import statement** - `import { TestBed } from '@angular/core/testing';`
 
 In the current course/tutorial will mainly deal with `Jasmine (to write tests) & Karma (to run the test and get results/code coverage reports)`.
+
+4 Setup Angular test
+=====================
+
+4.1. Installing tools-utilities
+---------------------
+
+1. Install Node (https://nodejs.org/en)
+2. Install Angular CLI (https://cli.angular.io/) command: `npm install -g @angular/cli` OR `npm i -g @angular/cli`
+3. Create a new Angular project with Angular CLI command: `ng new project/appName` OR `ng new angular-unit-test-demo`
+4. Run Angular App by using Angular CLI command: `ng serve`
+5. To run the test cases command: `ng test` 
+    - `ng test` command read all the test files from an application with `.spec` extensions and execute them in serial order
+    - `Karma` launches a headless browser window with port `9876` OR address `http://localhost:9876/?id=96650121` and shows test results and statistics (total test cases run, test pass/fail, etc.)
+
+> **Note**: Any system which has `Node/NPM/Angular CLI` installed, simply create an Angular App with the command: `ng new` and then run `ng test` command to start running default tests present in the application in the form of `.spec` files
+
+> **Note**: For detailed description of Node/NPM/Angular/Angular CLI Setup, please refer the following links:
+  - https://github.com/dinanathsj29/angularcli-angualr-cli#02-Getting-Started-with-Angular-CLI
+  - https://github.com/dinanathsj29/angular7-step-by-step#02-getting-started
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="./_images-angular-unit-testing-jasmine-karma/4.1.1-app-folder-structure-ng-serve-command.png" alt="Angular App Folder Structure - ng serve" title="Angular App Folder Structure - ng serve" width="1000" border="2" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Angular App Folder Structure - ng serve</figcaption>
+ </figure>
+</p>
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="./_images-angular-unit-testing-jasmine-karma/4.1.2-ng-serve-output.png" alt="Running Angular App - ng serve output" title="Running Angular App - ng serve output" width="1000" border="2" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Running Angular App - ng serve output</figcaption>
+ </figure>
+</p>
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="./_images-angular-unit-testing-jasmine-karma/4.1.3-ng-test.png" alt="Executing ng test command" title="Executing ng test command" width="1000" border="2" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Executing ng test command</figcaption>
+ </figure>
+</p>
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="./_images-angular-unit-testing-jasmine-karma/4.1.4-ng-test-output.png" alt="Running Angular Test - ng test output" title="Running Angular Test - ng test output" width="1000" border="2" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Running Angular Test - ng test output</figcaption>
+ </figure>
+</p>
+
+4.2. Core package-dependencies for testing
+---------------------
+
+See the image below which lists all the dependencies installed for testing purposes. Let’s go through the more important ones:
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="./_images-angular-unit-testing-jasmine-karma/4.2.1-package-dependencies.png" alt="Testing packages-dependencies" title="Testing packages-dependencies" width="1000" border="2" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Testing packages-dependencies</figcaption>
+ </figure>
+</p>
+
+- **<u>jasmine-core</u>**:
+  - Jasmine is the framework we are going to use to create our tests (`.spec` files consists of jasmine logic)
+  - It has a bunch of functionalities to allow us the write different kinds of tests
+- **<u>karma</u>**:
+  - Karma is a task runner tool for our tests
+  - It uses a configuration file to set the startup file, the reporters, the testing framework, the test output browser
+- **<u>protractor</u>**:
+  - End to End test writer framework
+  - The rest of the dependencies are mainly reporters for our tests, different tools to use karma and jasmine and browser launchers
+
+4.3. Core test setting-configuration files
+---------------------
+
+Here are some of the core test settings/configuration files
+
+- **<u>karma.conf.js</u>**:
+  - The unit test runner configuration file  
+- **<u>protractor.conf.js</u>**:
+  - Protractor end-to-end test framework configuration file  
+- **<u>test.ts</u>**:
+  - The main entry point for unit tests and loads all the `.spec` and framework files 
+  - The angular-cli configuration of karma uses the file `test.ts` as the entry point of the tests for the application 
+  - This file is required by karma.conf.js and loads recursively all the .spec and framework files
