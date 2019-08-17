@@ -82,10 +82,30 @@ Topics included/covered
     - 4.3. [Core test setting-configuration files](#43-core-test-setting-configuration-files)
 
 5. [Fundamentals of Unit Testing](#5-fundamentals-of-unit-testing)
-    - 5.1. [Clean coding principles-practices](#51-clean-coding-principles-practices)
+    - 5.1. [Clean coding principles-best practices](#51-clean-coding-principles-best-practices)
     - 5.2. [Creating a spec test file](#52-creating-a-spec-test-file)
     - 5.3. [How to write unit tests](#53-how-to-write-unit-tests)
     - 5.4. [Widely used Angular Unit Testing functions](#54-widely-used-angular-unit-testing-functions)
+
+6. [Starting with Unit Testing](#6-starting-with-unit-testing)
+    - 6.1. [Unit Testing-Functions](#61-unit-testing-functions)
+    - 6.2. [Unit Testing-Parameterized Functions](#62-unit-testing-parameterized-functions)
+    - 6.3. [Running a specific test case](#63-running-a-specific-test-case)
+    - 6.4. [Unit Testing-Strings](#64-unit-testing-strings)
+    - 6.5. [Unit Testing-Arrays](#65-unit-testing-arrays)
+    - 6.6. [Set Up and Tear Down](#66-set-up-and-tear-down)
+    - 6.7. [Unit Testing-Forms](#67-unit-testing-forms)
+    - 6.8. [Unit Testing-Event Emitters](#68-unit-testing-event-emitters)
+ 
+<!-- - 6.6. [Unit Testing-Components](#66-unit-testing-components)
+ - 6.7. [Unit Testing-Services](#67-unit-testing-services)
+- Spies
+- How to write Integration tests
+ - Integration test setup
+- Angular Testing Utilities - TestBed
+- Code coverage
+- Exercises 
+7. [Angular Testing Resources](#7-angular-testing-resources) -->
 
 1 Introduction to Automated testing
 =====================
@@ -248,11 +268,16 @@ Testing is important and done to:
 ---------------------
 1.9. Do I write Test first (TDD - Test Driven Development) or application code first?
 ---------------------
-Its all depends on TIME, MONEY and need/requirements - usually, developers and companies first prefers to do application development then go for (TDD - Test Driven Development) and or BDD (Behavior Driven Development).
+- **TDD (Test Driven Development)** - Sometimes, we write tests before we even start developing which is called TDD (Tests are written before the code)
+- We mostly follow BDD (Behavior Driven Development) since we are using jasmine framework
+
+Its all depends on TIME, MONEY and need/requirements - usually, developers and companies first prefer to do application development then go for testing ie. BDD (Behavior Driven Development).
 
 1.10. What to test
 ---------------------
 We can write Angular tests cases for testing Functions, Logics, Events, multiple types of Components, Attributes-Directives, Dependencies, Routers- Navigation, and services. 
+
+While writing test we must think/test all execution scenarios like `if and else condition, positive, negative outputs, pass and fail cases, true or false switch case` etc.
 
 2 Different types of tests
 =====================
@@ -276,8 +301,8 @@ Let's go through each testing type in detail and write the right tests for ensur
 - **<u>Funtionality Testing Confidence</u>** - Does not test the functionality of the application in detail, not give us much confidence about functionality
 
 > **Note**:
-  - To perform unit testing for application code, we need to develop a separate program which executes each unit of the software independently, providing proper input data from the source and then checking the output result against the expected results
-  - Usually, a unit testing program is written with the same programming language in which the actual program/code-logic is developed; e.g. if we develop a program in C#/Java/JavaScript, then we need to develop its related unit testing program in C#/Java/JavaScript respectively
+ - To perform unit testing for application code, we need to develop a separate program which executes each unit of the software independently, providing proper input data from the source and then checking the output result against the expected results
+ - Usually, a unit testing program is written with the same programming language in which the actual program/code-logic is developed; e.g. if we develop a program in C#/Java/JavaScript, then we need to develop its related unit testing program in C#/Java/JavaScript respectively
 
 
 <p>
@@ -332,17 +357,17 @@ The testing thumb-rule/testing pyramid says that: `75-80 % of the tests should b
 Angular testing toolchain consist of various tools of different types/categories, which can perform unit testing on Angular Framework. Some of the tools categories mentioned below:
 
 - **<u>Assertion Library</u>**: 
-  - Define test cases, write testing logic, conditions
-  - Examples/Tools: Jasmine, Chai
+    - Define test cases, write testing logic, conditions
+    - Examples/Tools: Jasmine, Chai
 - **<u>Test Runner</u>**: 
-  - Execute our tests and summarize results 
-  - Examples/Tools: Karma, Mocha
+    - Execute our tests and summarize results 
+    - Examples/Tools: Karma, Mocha
 - **<u>End-to-End testing tools</u>**: 
-  - Perform complete Application test
-  - Examples/Tools: Protractor
+    - Perform complete Application test
+    - Examples/Tools: Protractor
 - **<u>Headless Browser</u>**: 
-  - Simultes browser interaction, execute tests in GUI-less browser
-  - Examples/Tools: Headless chrome, Puppeteer, PhantomJS 
+    - Simultes browser interaction, execute tests in GUI-less browser
+    - Examples/Tools: Headless chrome, Puppeteer, PhantomJS 
 
 3.2. Testing Tools
 ---------------------
@@ -420,8 +445,8 @@ Here is the list of important tools used for Angular testing:
 - Angular uses Istanbul and Karma for built-in testing
 - `Istanbul is a Karma reporter` that uses the latest Istanbul 1.x APIs (with full source map support) to report coverage
 - Website URL: 
-    - https://www.npmjs.com/package/istanbul, 
-    - https://www.npmjs.com/package/karma-coverage-istanbul-reporter
+  - https://www.npmjs.com/package/istanbul, 
+  - https://www.npmjs.com/package/karma-coverage-istanbul-reporter
 
 <p>
  <figure>
@@ -448,8 +473,8 @@ Here is the list of important tools used for Angular testing:
 - Jasmine already uses a TDD style, so developers using Chai for its BDD interfaces, mainly through the use of `should` and `expect`
 - **Installation command**: `npm install chai`
 - Website URL: 
-    - https://www.chaijs.com/
-    - https://angular-2-training-book.rangle.io/testing/using-chai
+  - https://www.chaijs.com/
+  - https://angular-2-training-book.rangle.io/testing/using-chai
 
 <p>
  <figure>
@@ -463,8 +488,8 @@ Here is the list of important tools used for Angular testing:
 - Mocha makes synchronous and asynchronous testing simple and fun, also runs test serially, allowing for flexible and accurate reporting
 - **Installation command**: `npm install mocha`
 - Website URL: 
-    - https://mochajs.org/
-    - https://github.com/mochajs/mocha
+  - https://mochajs.org/
+  - https://github.com/mochajs/mocha
 
 ### 3.2.9. Angular Testing Utilities
 - Help us to create a test environment for the complete/whole application code 
@@ -486,15 +511,20 @@ In the current course/tutorial will mainly deal with `Jasmine (to write tests) &
 2. Install Angular CLI (https://cli.angular.io/) command: `npm install -g @angular/cli` OR `npm i -g @angular/cli`
 3. Create a new Angular project with Angular CLI command: `ng new project/appName` OR `ng new angular-unit-test-demo`
 4. Run Angular App by using Angular CLI command: `ng serve`
-5. To run the test cases command: `ng test` 
-    - `ng test` command read all the test files from an application with `.spec` extensions and execute them in serial order
-    - `Karma` launches a headless browser window with port `9876` OR address `http://localhost:9876/?id=96650121` and shows test results and statistics (total test cases run, test pass/fail, etc.)
+5. To run the test cases/test scripts command: `ng test` 
+   - `ng test` command read all the spec/test files from an application with `.spec` extensions and execute them in serial order
+   - `Karma` launches a headless browser window with port `9876` OR address `http://localhost:9876/?id=96650121` and shows test results and statistics (total test cases run, test pass/fail, etc.)
 
-> **Note**: Any system which has `Node/NPM/Angular CLI` installed, simply create an Angular App with the command: `ng new` and then run `ng test` command to start running default tests present in the application in the form of `.spec` files
+> **Note**: 
+- We don’t have to set up anything special to start on unit testing, Thanks to `Angular CLI - an Angular Command Line Interface/Utility`
+- Angular CLI creates all the set up (jasmine and karma) for us
+- Any system which has `Node/NPM/Angular CLI` installed, 
+ - simply create an Angular App with the command: `ng new appName` and then 
+ - run `ng test` command to start running default tests/test script present in the application in the form of `.spec` files
 
 > **Note**: For detailed description of Node/NPM/Angular/Angular CLI Setup, please refer the following links:
-  - https://github.com/dinanathsj29/angularcli-angualr-cli#02-Getting-Started-with-Angular-CLI
-  - https://github.com/dinanathsj29/angular7-step-by-step#02-getting-started
+ - https://github.com/dinanathsj29/angularcli-angualr-cli#02-Getting-Started-with-Angular-CLI
+ - https://github.com/dinanathsj29/angular7-step-by-step#02-getting-started
 
 <p>
  <figure>
@@ -552,9 +582,9 @@ See the image below which lists all the dependencies installed for testing purpo
 Here are some of the core test settings/configuration files
 
 - **<u>karma.conf.js</u>**:
-  - The unit test runner configuration file  
+  - The unit test runner configuration file 
 - **<u>protractor.conf.js</u>**:
-  - Protractor end-to-end test framework configuration file  
+  - Protractor end-to-end test framework configuration file 
 - **<u>test.ts</u>**:
   - The main entry point for unit tests and loads all the `.spec` and framework files 
   - The angular-cli configuration of karma uses the file `test.ts` as the entry point of the tests for the application 
@@ -563,24 +593,30 @@ Here are some of the core test settings/configuration files
 5 Fundamentals of Unit Testing
 =====================
 
-5.1. Clean coding principles-practices
+5.1. Clean coding principles-best practices
 ---------------------
 
 - Need to follow clean coding practices for writing code of development as well as test cases:
  - Small functions/methods (10 lines of code or less)
- - Proper naming conventions for variables and functions/methods
+ - Proper naming conventions for variables and functions/methods (Follow clear and consistent naming conventions for your unit tests)
  - Single responsibility principle (one function should do/perform one task only)
+ - Unit Test cases should be independent (In case of any enhancements or change in requirements, unit test cases should not be affected)
+ - Test only one code at a time
+ - While writing test we must think/test all execution scenarios like `if and else condition, positive, negative outputs, pass and fail cases, true or false switch case` etc.
+ - In case of a change in code in any module, ensure there is a corresponding unit Test Case for the module, and the module passes the tests before changing the implementation
+ - Bugs identified during unit testing must be fixed before proceeding to the next phase in SDLC (Software Development Life Cycle)
+ - Adopt a `test as you code` approach, The more code you write without testing, the more paths you have to check for errors
 
 5.2. Creating a spec test file
 ---------------------
 
 1. Create a new Test file which should have `.spec.ts` extension
- - Every class/component file should have its corresponding Unit Test case file with `.spec.ts` extension 
- - `(e.g.: component = header.component.ts, unit testing/spec file = header.component.spec.ts)`
+    - Every class/component file should have its corresponding Unit Test case file with `.spec.ts` extension 
+    - `(e.g.: component = header.component.ts, unit testing/spec file = header.component.spec.ts)`
 2. Angular development team recommends putting unit test scripts alongside the files they are testing and using a `.spec` filename extension to mark it as a testing script (it's a Jasmine convention) 
- - `header.component.ts, header.component.spec.ts` - should present under one folder
+    - `header.component.ts, header.component.spec.ts` - should present under one folder
 3. Inside `.spec` test file write Unit Test cases as per logic/functionality mentioned and/or as per specific needs-requirements in the component class file
-4. To run the test cases, use Angular CLI command: `ng test`
+4. To run the test cases/test scripts, use Angular CLI command: `ng test`
 
 5.3. How to write unit tests
 ---------------------
@@ -639,6 +675,7 @@ describe('HeaderComponent', () => {
 ### 5.4.1. describe()
 - Define a test suite (group of related tests)
 - The `describe(string, function)` function defines what we call a Test Suite, a collection of individual Test Specs
+- Usually with describe block we define/describe - name of the current component to test
 - e.g. 
  ```
  describe('test-suite-name', () => { 
@@ -655,6 +692,7 @@ describe('HeaderComponent', () => {
 ### 5.4.2. it()
 - Define a individual spec or test
 - The `it(string, function)` function defines an individual Test Spec, this contains one or more Test Expectations
+- The `it` block must have proper readable and meaningful statement as a Test Spec/description
 - With in `describe()`, we can `have one or more it() functions` - (group of related test/sepc)
 - Inside `it()` block `define test/code behavior` - expectation/assertion
 - e.g. 
@@ -715,4 +753,786 @@ describe('HeaderComponent', () => {
  expect(spy).toHaveBeenCalledTimes(number);
  expect(spy).toHaveBeenCalledWith(...arguments);
  ```
+
+6 Starting with Unit Testing
+=====================
+
+Till now we know and learned that **Unit testing is nothing but `testing only component class` file without any template/view or external dependencies, with fake services and fake routers. so its time to learn basics-fundamentals to advanced level of unit testing**
+
+***As and when we are running the test, it should run in an isolated mode - as its only test exist in the .spec.ts file***
+
+1. **Comment/Remove old test cases (app.component.spec.ts)** - To avoid any confusion/conflicts with pre-existing tests, please comment/remove all the test cases (3 tests) available in app.component.spec.ts file.
+
+6.1. Unit Testing-Functions
+---------------------
+
+### 6.1.1. Creating the first component to test
+
+1. Create a new folder and first component file - `app/01-unit-test/01-fundamentals-functions/01-counter.ts`
+
+> **Syntax & Example**: `01-fundamentals-functions/01-counter.ts`
+
+```
+export class CounterComponent {
+
+ public counter: number = 0;
+
+ // increment
+ public increaseCounter(): number {
+
+ this.counter++;
+
+ return this.counter;
+
+ }
+
+ // decrement
+ public decreaseCounter(): number {
+
+ this.counter--;
+
+ return this.counter;
+
+ }
+
+} // class CounterComponent
+```
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="./_images-angular-unit-testing-jasmine-karma/6.1.1a-function-counter.png" alt="Unit Testing file/folder - counter component" title="Unit Testing file/folder - counter component" width="1000" border="2" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Unit Testing file/folder - counter component</figcaption>
+ </figure>
+</p>
+
+
+### 6.1.2. Creating the first test script
+
+1. Create a .spec/test file - `01-counter.spec.ts` and write test case for following scenarios:
+    - if `increaseCounter` function called than `curCounterValue` value will be greater than zero (positive) and 
+
+> **Syntax & Example**: `01-fundamentals-functions/01-counter.spec.ts` 
+
+```
+// import component to test 
+import { CounterComponent } from "./01-counter";
+
+// 1. describe - define test suite, Create a group of specs (often called a suite)
+describe('CounterComponent', ()=> {
+
+ // 2. it - define an individual unit test case
+ it ('should check incremented value is greater than zero', ()=> {
  
+ // dependency injection
+ let counterComponent: CounterComponent = new CounterComponent();
+
+ const curCounterValue = counterComponent.increaseCounter();
+
+ // 3. expect - Create an expectation/assertion for a spec
+ expect(curCounterValue).toBeGreaterThan(0);
+
+ }) 
+
+}) // describe
+```
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="./_images-angular-unit-testing-jasmine-karma/6.1.1b-unit-test-function-counter.png" alt="Unit Testing - counter .spec test file" title="Unit Testing - counter .spec test file" width="1000" border="2" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Unit Testing - counter .spec test file</figcaption>
+ </figure>
+</p>
+
+### 6.1.3. Running/Executing the first test script
+
+1. Run the test cases/test scripts, by using Angular CLI command: `ng test`
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="./_images-angular-unit-testing-jasmine-karma/6.1.1c-ng-test-function-counter.png" alt="Unit Testing - Running test" title="Unit Testing - Running test" width="1000" border="2" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Unit Testing - Running test</figcaption>
+ </figure>
+</p>
+
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="./_images-angular-unit-testing-jasmine-karma/6.1.1d-ng-test-output-function-counter.png" alt="Unit Testing - Running test - Browser Karma output" title="Unit Testing - Running test - Browser Karma output" width="1000" border="2" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Unit Testing - Running test - Browser Karma output</figcaption>
+ </figure>
+</p>
+
+### 6.1.4. Write and add other test cases in .spec file
+
+4. Write another test case for the negative scenario as:
+    - in case of decreaseCounter function executed curCounterValue value will be less than zero (negative) 
+
+```
+it ('should check decremented value is less than zero', ()=> {
+ 
+ let counterComponent: CounterComponent = new CounterComponent();
+
+ const curCounterValue = counterComponent.decreaseCounter();
+
+ expect(curCounterValue).toBeLessThan(0);
+
+}) 
+```
+
+<hr/>
+
+> **Syntax & Example**: final `01-fundamentals-functions/01-counter.spec.ts` 
+
+```
+// import component to test 
+import { CounterComponent } from "./01-counter";
+
+// 1. describe - define test suite, Create a group of specs (often called a suite)
+describe('CounterComponent', ()=> {
+
+ // 2. it - define an individual unit test case
+ it ('should check incremented value is greater than zero', ()=> {
+ 
+ // dependency injection
+ let counterComponent: CounterComponent = new CounterComponent();
+
+ const curCounterValue = counterComponent.increaseCounter();
+
+ // 3. expect - Create an expectation/assertion for a spec
+ expect(curCounterValue).toBeGreaterThan(0);
+
+ }) 
+
+ it ('should check decremented value is less than zero', ()=> {
+ 
+ let counterComponent: CounterComponent = new CounterComponent();
+
+ const curCounterValue = counterComponent.decreaseCounter();
+
+ expect(curCounterValue).toBeLessThan(0);
+
+ }) 
+
+}) // describe
+```
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="./_images-angular-unit-testing-jasmine-karma/6.1.1e-ng-test-function-all-test.png" alt="Unit Testing - Running all tests" title="Unit Testing - Running all tests" width="1000" border="2" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Unit Testing - Running all tests</figcaption>
+ </figure>
+</p>
+
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="./_images-angular-unit-testing-jasmine-karma/6.1.1f-ng-test-output-function-all-test.png" alt="Unit Testing - Running all test - Browser Karma output" title="Unit Testing - Running all test - Browser Karma output" width="1000" border="2" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Unit Testing - Running all test - Browser Karma output</figcaption>
+ </figure>
+</p>
+
+
+6.2. Unit Testing-Parameterized Functions
+---------------------
+
+### 6.2.1. Simple calculator with parameterized function
+
+> **Syntax & Example**: `02-parameterized-functions/01-parameter-counter.ts`
+
+```
+export function counterParameter(num): number {
+
+ if (num < 0) {
+
+ return 0
+
+ } else {
+
+ return num + 1;
+ }
+
+}
+```
+
+<hr/>
+
+> **Syntax & Example**: `02-parameterized-functions/01-parameter-counter.spec.ts`
+
+```
+// import function/component to test 
+import { counterParameter } from "./01-parameter-counter";
+
+// 1. describe - define test suite, Create a group of specs (often called a suite)
+describe('counterParameter', ()=> {
+
+ // 2. it - define an individual unit test case
+ it ('should return zero 0 if input is negative', ()=> {
+ 
+ const counterResult = counterParameter(-1);
+
+ // 3. expect - Create an expectation/assertion for a spec
+ expect(counterResult).toBe(0);
+ expect(counterResult).toBeLessThanOrEqual(0);
+
+ }) 
+
+ it ('should increment if input is positive', ()=> {
+ 
+ const counterResult = counterParameter(1);
+
+ expect(counterResult).toBe(2);
+
+ }) 
+ 
+}) // describe
+```
+
+### 6.2.2. Dimension calculator with parameterized function
+
+> **Syntax & Example**: `02-parameterized-functions/02-parameter-dimension-calculator.ts`
+
+```
+export class DimensionCalculator {
+
+ public getArea(length: number, width: number): number {
+
+ let area = length * width;
+
+ return area;
+
+ }
+
+}
+```
+
+<hr/>
+
+> **Syntax & Example**: `02-parameterized-functions/02-parameter-dimension-calculator.ts`
+
+```
+// import function/component to test 
+import { DimensionCalculator } from "./02-parameter-dimension-calculator";
+
+// 1. describe - define test suite, Create a group of specs (often called a suite)
+describe('DimensionCalculator', () => {
+
+ // 2. it - define an individual unit test case
+ it('should return area equal or greater than 100', () => {
+
+ // dependency injection
+ let dimensionComponent: DimensionCalculator = new DimensionCalculator();
+
+ const areaResult = dimensionComponent.getArea(10, 10);
+
+ // 3. expect - Create an expectation/assertion for a spec
+ expect(areaResult).toBeGreaterThanOrEqual(100);
+
+ })
+
+}) // describe
+```
+
+6.3. Running a specific test case
+---------------------
+6.3. Ignore/prevent unwanted test case to run
+---------------------
+
+- Test files with extension `.spec.ts` may contain multiple test cases/test scripts, as in current application `01-counter.spec.ts` file have total 2 test cases
+- To run a specific test from a bunch of tests cases, one can simply put/use/insert `f` before `it() function block`
+
+```
+
+fit ('should check incremented value is greater than zero ', ()=> { })
+
+```
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="./_images-angular-unit-testing-jasmine-karma/6.3.1a-run-specific-test.png" alt="Unit Testing - Running specific test" title="Unit Testing - Running specific test" width="1000" border="2" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Unit Testing - Running specific test</figcaption>
+ </figure>
+</p>
+
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="./_images-angular-unit-testing-jasmine-karma/6.3.1b-run-specific-test-output.png" alt="Unit Testing - Running specific test - Browser Karma output" title="Unit Testing - Running specific test - Browser Karma output" width="1000" border="2" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Unit Testing - Running specific test - Browser Karma output</figcaption>
+ </figure>
+</p>
+
+- Another way is to put/use/insert `x` before `it() function block`, it will prevent running that particular specs/test scripts
+ - In the below scenario, 2nd test case with `x` will be ignored
+
+```
+
+it ('should check incremented value is greater than zero ', ()=> { })
+
+xit ('should check decremented value is less than zero ', ()=> { })
+
+```
+
+> **Note**: We can use `f` and `x` even with `describe() block` to run specific test suit or to ignore unwanted test suit
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="./_images-angular-unit-testing-jasmine-karma/6.3.1c-ignore-specific-test.png" alt="Unit Testing - Ignore specific test" title="Unit Testing - Ignore specific test" width="1000" border="2" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Unit Testing - Ignore specific test</figcaption>
+ </figure>
+</p>
+
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="./_images-angular-unit-testing-jasmine-karma/6.3.1d-ignore-specific-test-output.png" alt="Unit Testing - Ignore specific test - Browser Karma output" title="Unit Testing - Ignore specific test - Browser Karma output" width="1000" border="2" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - Unit Testing - Ignore specific test - Browser Karma output</figcaption>
+ </figure>
+</p>
+
+
+6.4. Unit Testing-Strings
+---------------------
+
+> **Note: What to test?** 
+ - With Strings and Arrays dont write very specific/fragile unit test case (with .`toBe()` matcher function) - if specific string not availble it may break easily 
+ - instead, its advisable to use `.toContain()` matcher function - to check availability of particuler text/string
+
+> **Syntax & Example**: `04-strings/01-string-greetings.ts`
+
+```
+export function greetingsTo(personName: string) {
+
+ return 'Welcome ' + personName;
+ // return 'Hello ' + personName;
+
+}
+```
+
+<hr/>
+
+> **Syntax & Example**: `04-strings/01-string-greetings.spec.ts`
+
+```
+// import function/component to test 
+import { greetingsTo } from "./01-greetings";
+
+// 1. describe - define test suite, Create a group of specs (often called a suite)
+describe('GreetingString', () => {
+
+ // 2. it - define an individual unit test case
+ it('should include person name in the greeting message', () => {
+
+ // 3. expect - Create an expectation/assertion for a spec
+ expect(greetingsTo('Dinanath')).toContain('Welcome Dinanath');
+ // expect(greetingsTo('Dinanath')).toContain('Hello Dinanath');
+
+ })
+
+}) // describe
+```
+
+6.5. Unit Testing-Arrays
+---------------------
+
+> **Note: What to test?**
+ - While testing an array we must need to assert/test/check that array must include-contains particular item/string/value, irrespective of its exact position in an array
+
+> **Syntax & Example**: `05-arrays/01-array-country.ts`
+
+```
+export function getCountry() {
+
+ return ['India', 'Russia', 'Japan', 'israel', 'France'];
+
+}
+```
+
+<hr/>
+
+> **Syntax & Example**: `05-arrays/01-array-country.spec.ts`
+
+```
+// import function/component to test 
+import { getCountry } from "./01-array-country";
+
+// 1. describe - define test suite, Create a group of specs (often called a suite)
+describe('ArrayGetCountry', () => {
+
+ // 2. it - define an individual unit test case
+ it('should return supported country in array', () => {
+
+ // 3. expect - Create an expectation/assertion for a spec
+ expect(getCountry()).toContain('India');
+ expect(getCountry()).toContain('Russia');
+ })
+
+ it('should return supported country in array', () => {
+
+ const countryResult = getCountry();
+ expect(countryResult).toContain('India');
+ expect(countryResult).toContain('Israel');
+
+ })
+
+}) // describe
+```
+
+6.6. Set Up and Tear Down
+---------------------
+6.6. Triple-A - AAA - 3A - Arrang, Act and Assert pattern/structure
+---------------------
+
+### 6.6.1. SetUp and TearDown
+
+- **Set Up**: 
+  - Sometimes to test a feature we need to perform some setup, perhaps it’s creating some test objects, components initialization, dependency injection, etc.
+  - Code written in `beforeEach()` function is known as `Set Up`
+
+- **Tear Down**: 
+  - Also, we may need to perform some cleanup activities after we have finished testing, like reset object/variable value, perhaps we need to delete some files from the hard drive, etc.
+  - Code written in `afterEach()` function is known as `Tear Down`
+
+Jasmine has a few functions we can use to make the activities named setup and teardown easier:
+
+1. **beforeAll()**:
+    - This function is called once, before all the specs in `describe` test suite is run
+
+2. **afterAll()**:
+    - This function is called once `after all the specs in a test suite are finished`
+
+3. **beforeEach()**:
+    - Jasmine calls this function before each and every test - `it` function
+    - This function is called before each test specification, `it` function, has been run
+    - Its advisable to put `common things/initialize` variables/object inside `beforeEach()` function
+    - `beforeEach` runs before each test and is used for the `setup` part of a test
+
+4. **afterEach()**:
+    - Jasmine calls this function after every test - `it` function
+    - This function is called after each test specification has been run
+    - Runs after each test and is used for the `teardown` part of a test
+
+### 6.6.2. Tripple A - AAA - 3A - Arrang, Act and Assert pattern/structure
+
+The `AAA (Arrange, Act, Assert) pattern/structure` is a common way of writing unit tests for a method under test. It suggests that you should divide your test method into three sections: `arrange, act and assert`. It also makes the test more clean and readable.
+
+- **Arrang**: 
+  - Initialize system under test
+  - The `Arrange` section of a unit test method `initializes objects` and `sets the value` of the data that is passed to the method under test
+  - ```let component = new ComponentToCheck();```
+ 
+- **Act**: 
+  - Calling a method/function which perform some activity
+  - ```component.methodFunction();```
+ 
+- **Assert**: 
+  - The fact to check/test
+  - The `Assert section verifies` that the action of the method under test behaves as expected
+
+ ```
+ expect(var-name).toBe(value);
+ expect(var-name).toContain(value);
+ expect(var-name).toEqual(value);
+ expect(var-name).toBeNull(value);
+ expect(var-name).toBeTruthy(value);
+ expect(var-name).toBeFalsy(value);
+ ```
+
+<hr/>
+
+> **Syntax & Example**: `06-setup-and-teardown/01-counter.ts`
+
+```
+export class CounterComponent {
+
+ public counter: number = 0;
+
+ // increment
+ public increaseCounter(): number {
+
+ this.counter++;
+
+ return this.counter;
+
+ }
+
+ // decrement
+ public decreaseCounter(): number {
+
+ this.counter--;
+
+ return this.counter;
+
+ }
+
+} // class CounterComponent
+```
+
+<hr/>
+
+> **Syntax & Example**: `06-setup-and-teardown/0101-basic-simple-counter.spec.ts`
+
+```
+import { CounterComponent } from "./01-counter";
+
+describe('BasicSimplefCounterComponent', () => {
+
+ it('should check incremented value is greater than zero', () => {
+
+ let counterComponent: CounterComponent = new CounterComponent();
+
+ const curCounterValue = counterComponent.increaseCounter();
+
+ expect(curCounterValue).toBeGreaterThan(0);
+
+ })
+
+ it('should check decremented value is less than zero', () => {
+
+ let counterComponent: CounterComponent = new CounterComponent();
+
+ const curCounterValue = counterComponent.decreaseCounter();
+
+ expect(curCounterValue).toBeLessThan(0);
+
+ })
+
+})
+```
+
+<hr/>
+
+> **Syntax & Example**: `06-setup-and-teardown/0102-aaa-arrange-act-assert-counter.spec.ts`
+
+```
+import { CounterComponent } from "./01-counter";
+
+describe('ArrangeActAssertCounterComponent', () => {
+
+ it('should check incremented value is greater than zero', () => {
+
+ // Arrange - dependency injection
+ let counterComponent: CounterComponent = new CounterComponent();
+
+ // Act - call a method/function
+ const curCounterValue = counterComponent.increaseCounter();
+
+ // Assert - 3. expect - Create an expectation/assertion for a spec
+ expect(curCounterValue).toBeGreaterThan(0);
+
+ })
+
+ it('should check decremented value is less than zero', () => {
+
+ // Arrange - dependency injection
+ let counterComponent: CounterComponent = new CounterComponent();
+
+ // Act - call a method/function
+ const curCounterValue = counterComponent.decreaseCounter();
+
+ // Assert - 3. expect - Create an expectation/assertion for a spec
+ expect(curCounterValue).toBeLessThan(0);
+
+ })
+
+})
+```
+
+<hr/>
+
+> **Syntax & Example**: `06-setup-and-teardown/0103-setup-teardown-counter.spec.ts`
+
+> **Note**: To follow Setup and TearDown methodology we can remove the common code from `it block` and put in the body of test suit ie. `inside describe block`
+
+```
+import { CounterComponent } from "./01-counter";
+
+fdescribe('SetupTearDownCounterComponent', () => { 
+
+ // Arrange - dependency injection
+ let counterComponent: CounterComponent;
+
+ // setup - initialize objects and variables
+ beforeEach(() => {
+
+ counterComponent = new CounterComponent();
+
+ })
+
+ it('should check incremented value is greater than zero', () => {
+
+ // Act - call a method/function
+ const curCounterValue = counterComponent.increaseCounter();
+
+ // Assert - 3. expect - Create an expectation/assertion for a spec
+ expect(curCounterValue).toBeGreaterThan(0);
+
+ })
+
+ it('should check decremented value is less than zero', () => {
+
+ // Act - call a method/function
+ const curCounterValue = counterComponent.decreaseCounter();
+
+ // Assert - 3. expect - Create an expectation/assertion for a spec
+ expect(curCounterValue).toBeLessThan(0);
+
+ })
+
+}) 
+```
+
+6.7. Unit Testing-Forms
+---------------------
+
+> **Note: What to test?**
+ - At the time of `LoginFormComponent initialization`, it must have `FormGroup` with three controls `name`, `password` and `email`
+ - Insure `Validataors` for controls should be present/available/used
+
+> **Syntax & Example**: `07-forms/01-loginform.component.ts`
+
+```
+import { FormBuilder, FormGroup, Validator, Validators } from "@angular/forms";
+
+export class LoginFormComponent {
+
+ loginForm: FormGroup;
+
+ constructor(loginFB: FormBuilder) {
+
+ this.loginForm = loginFB.group({
+
+ name: ['', Validators.required],
+ password: ['', Validators.minLength(8)],
+ email: ['', Validators.email]
+ 
+ })
+
+ }
+
+}
+```
+
+<hr/>
+
+> **Syntax & Example**: `07-forms/01-loginform.component.spec.ts`
+
+```
+import { LoginFormComponent } from "./01-loginform.component";
+
+import { FormBuilder } from "@angular/forms";
+
+describe('LoginFormComponent', () => { 
+
+ let loginFormComponent: LoginFormComponent;
+
+ beforeEach(() => {
+
+ loginFormComponent = new LoginFormComponent(new FormBuilder);
+
+ })
+
+ it('should create a form with 3 controls', () => {
+
+ expect(loginFormComponent.loginForm.contains('name')).toBe(true);
+ expect(loginFormComponent.loginForm.contains('password')).toBeTruthy();
+ expect(loginFormComponent.loginForm.contains('email')).toBeTruthy();
+
+ })
+
+ it('should make the name control required', () => {
+
+ let nameControl = loginFormComponent.loginForm.get('name');
+
+ nameControl.setValue('');
+
+ expect(nameControl.valid).toBeFalsy();
+
+ })
+
+ it('should use password with minimum 8 characters', () => {
+
+ let passwordControl = loginFormComponent.loginForm.get('password');
+
+ passwordControl.setValue('12345678')
+
+ expect(passwordControl.valid).toBeTruthy();
+
+ })
+
+ it('should validate the email input type', () => {
+
+ let emailControl = loginFormComponent.loginForm.get('email');
+
+ emailControl.setValue('dinanathj@gmail.com')
+
+ expect(emailControl.valid).toBeTruthy();
+
+ })
+
+}) 
+```
+
+6.8. Unit Testing-Event Emitters
+---------------------
+
+> **Note: What to test?**
+ - `EventEmitters are observables, so subscribe to them and test/check the emitted event/value`
+
+> **Syntax & Example**: `08-event-emitter/01-event-emitter-count.component.ts`
+
+```
+import { EventEmitter } from "@angular/core";
+
+export class EventCounterComponent {
+
+ totalCount = 0;
+
+ counterChanged = new EventEmitter();
+
+ incrementCounter() {
+
+ this.totalCount++;
+ this.counterChanged.emit(this.totalCount);
+ 
+ }
+
+}
+```
+
+<hr/>
+
+> **Syntax & Example**: `08-event-emitter/01-event-emitter-count.component.spec.ts`
+
+```
+import { EventCounterComponent } from "./01-event-emitter-count.component";
+
+describe('EventCounterComponent', () => { 
+
+ let eventCounterComponent: EventCounterComponent;
+
+ beforeEach(() => {
+
+ eventCounterComponent = new EventCounterComponent();
+
+ })
+
+ it('should raise counterChanged event when incrementCounter fired', () => {
+
+ let totalCounter = 0; 
+ // let totalCounter = null;
+
+ eventCounterComponent.counterChanged.subscribe(_totalCount => {
+
+ totalCounter = _totalCount;
+
+ eventCounterComponent.incrementCounter();
+
+ expect(totalCounter).toBe(1);
+ // expect(totalCounter).not.toBeNull();
+
+ })
+
+ })
+
+}) 
+```
