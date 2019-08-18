@@ -96,16 +96,9 @@ Topics included/covered
     - 6.6. [Set Up and Tear Down](#66-set-up-and-tear-down)
     - 6.7. [Unit Testing-Forms](#67-unit-testing-forms)
     - 6.8. [Unit Testing-Event Emitters](#68-unit-testing-event-emitters)
- 
-<!-- - 6.6. [Unit Testing-Components](#66-unit-testing-components)
- - 6.7. [Unit Testing-Services](#67-unit-testing-services)
-- Spies
-- How to write Integration tests
- - Integration test setup
-- Angular Testing Utilities - TestBed
-- Code coverage
-- Exercises 
-7. [Angular Testing Resources](#7-angular-testing-resources) -->
+    - 6.9. [Unit Testing Limitations](#69-unit-testing-limitations)
+
+7. [Code coverage](#7-code-coverage)
 
 1 Introduction to Automated testing
 =====================
@@ -1536,3 +1529,120 @@ describe('EventCounterComponent', () => {
 
 }) 
 ```
+
+6.9. Unit Testing Limitations
+---------------------
+There are some limitations with unit tests:
+- `Routers` (Not able to cover with Unit Test. we need to load component in Angular environment so need to follow Integration testing)
+- `Template interpolation and binding` (With a Unit test, not sure properties binded properly in the template )
+- `Event Handlers` (click event or so)
+- Unit testing `can't be expected to catch every error` in a program
+- It is `not possible to evaluate all execution paths` even in the most trivial/small programs
+- Unit testing focuses on a unit of code, hence it `can't catch integration errors` or broad system-level errors
+
+7 Code coverage
+=====================
+- As and when we write the test for our application we must need to know and understand how much code has been covered under test cases 
+- `Code coverage` represents how much `percent of code is covered with unit tests`
+- With the Angular CLI, we can run unit tests as well as create code coverage reports - Code coverage reports allow us to see any parts of our code base that may not be properly tested by our unit tests
+- `karma.conf.js` consists of a key `coverageIstanbulReporter` for code coverage related settings:
+
+```
+** If your team decides on a set minimum amount to be unit tested you can enforce this minimum with the Angular CLI
+
+** The thresholds property will enforce a minimum of 80% code coverage when the unit tests are run in the project.
+
+coverageIstanbulReporter: {
+ dir: require('path').join(__dirname, '../coverage'),
+ reports: ['html', 'lcovonly'],
+ fixWebpackSourcePaths: true
+},
+
+coverageIstanbulReporter: {
+ reports: [ 'html', 'lcovonly' ],
+ fixWebpackSourcePaths: true,
+ thresholds: {
+ statements: 80,
+ lines: 80,
+ branches: 80,
+ functions: 80
+ }
+}
+
+```
+
+- If you want to `create code-coverage reports every time you test`, you can set the following option in the CLI configuration file, `angular.json`: This will produce code coverage results whenever tests are run for the project
+
+```
+"test": {
+ "options": {
+ "codeCoverage": true
+ }
+}
+
+```
+
+To find out exact code coverage percentage / To generate a coverage report run the following command in the root of your project:
+- `ng test --codeCoverage` OR
+- ng test --code-coverage
+
+Generate the code-coverage report at the same time close Karma test window (don't watch unit test cases):
+- ng test --no-watch --code-coverage
+- ng test --watch=false --code-coverage
+
+output:
+- Angular CLI generates the coverage report in a separate folder called `coverage` at the root
+- Every folder in the `coverage/src/app` has his index.html, we can load that in the browser to see the actual report for that particular folder or module
+- `coverage/index.html`: To check the final report on code coverage of every individual component or page/files or folders
+- `coverage/src/index.html`: Shows report of `polyfills.ts` and `test.ts`
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/7.1.1-code-coverage-folder-structure-explorer.png" alt="code coverage - folder structure" title="code coverage - folder structure" width="1000" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - code coverage - folder structure </figcaption>
+ </figure>
+</p>
+
+<hr/>
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/7.1.2-code-coverage-folder-structure-vs-code.png" alt="code coverage - folder structure - vs code" title="code coverage - folder structure - vs code" height="600" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - code coverage - folder structure - vs code </figcaption>
+ </figure>
+</p>
+
+<hr/>
+
+If you load the `coverage/index.html` from this folder in the browser, we can see the full report:
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/7.1.3-code-coverage-index.png" alt="code coverage - index - full report" title="code coverage - index - full report" width="800" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - code coverage - index - full report </figcaption>
+ </figure>
+</p>
+
+<hr/>
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/7.1.4-code-coverage-individual-component.png" alt="code coverage - individual component" title="code coverage - individual component" width="800" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - code coverage - individual component </figcaption>
+ </figure>
+</p>
+
+<hr/>
+
+<p>
+ <figure>
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/7.1.5-code-coverage-red-green-whats-covered.png" alt="code coverage - Red Gren Highlight - Whats covered" title="code coverage - Red Gren Highlight - Whats covered" width="800" />
+ <figcaption>&nbsp;&nbsp;&nbsp; Image - code coverage - Red Gren Highlight - Whats covered </figcaption>
+ </figure>
+</p>
+
+<hr/>
+
+> **Note**: 
+- To verify code coverage report percentage, one can `comment-uncomment` some code from `.spec` files and view the report
+- In code coverage report, `lines marked in GREEN are covered in test` and lines `highlighted in RED are not covered` in the test (no test written for such lines)
