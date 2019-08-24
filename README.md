@@ -1739,17 +1739,21 @@ There are some limitations with unit tests:
 - It is `not possible to evaluate all execution paths` even in the most trivial/small programs
 - Unit testing focuses on a unit of code, hence it `can't catch integration errors` or broad system-level errors
 
+
 7 Code coverage
 =====================
+
 - As and when we write the test for our application we must need to know and understand how much code has been covered under test cases 
 - `Code coverage` represents how much `percent of code is covered with unit tests`
 - With the Angular CLI, we can run unit tests as well as create code coverage reports - Code coverage reports allow us to see any parts of our code base that may not be properly tested by our unit tests
 - `karma.conf.js` consists of a key `coverageIstanbulReporter` for code coverage related settings:
 
-```
-** If your team decides on a set minimum amount to be unit tested you can enforce this minimum with the Angular CLI
+> **If your team decides on a set minimum amount to be unit tested you can enforce this minimum with the Angular CLI:**
 
-** The thresholds property will enforce a minimum of 80% code coverage when the unit tests are run in the project.
+- The `thresholds` property will enforce a minimum of `80%` code coverage when the unit tests are run in the project
+
+
+```
 
 coverageIstanbulReporter: {
  dir: require('path').join(__dirname, '../coverage'),
@@ -1789,7 +1793,7 @@ Generate the code-coverage report at the same time close Karma test window (don'
 - ng test --no-watch --code-coverage
 - ng test --watch=false --code-coverage
 
-output:
+> **Output:**
 - Angular CLI generates the coverage report in a separate folder called `coverage` at the root
 - Every folder in the `coverage/src/app` has his index.html, we can load that in the browser to see the actual report for that particular folder or module
 - `coverage/index.html`: To check the final report on code coverage of every individual component or page/files or folders
@@ -1845,6 +1849,7 @@ If you load the `coverage/index.html` from this folder in the browser, we can se
 > **Note**: 
 - To verify code coverage report percentage, one can `comment-uncomment` some code from `.spec` files and view the report
 - In code coverage report, `lines marked in GREEN are covered in test` and lines `highlighted in RED are not covered` in the test (no test written for such lines)
+
 
 9 Angular Testing Resources
 =====================  
