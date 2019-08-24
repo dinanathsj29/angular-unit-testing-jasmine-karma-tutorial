@@ -63,7 +63,7 @@ Topics included/covered
     - 1.6. [Why Test?](#16-why-test)
     - 1.7. [Benefits/Advantages of Automated Testing](#17-benefits-advantages-of-automated-testing)
     - 1.8. [Do I need Automated testing?](#18-do-i-need-automated-testing)
-    - 1.9. [First code or write the test?](#19-first-code-or-write-the-test)
+    - 1.9. [First code or write the test? TDD BDD](#19-first-code-or-write-the-test-tdd-bdd)
     - 1.10. [What to test?](#110-what-to-test)
 
 2. [Different types of tests](#2-different-types-of-tests)
@@ -100,6 +100,28 @@ Topics included/covered
 
 7. [Code coverage](#7-code-coverage)
 
+8. [Working with Integration Testing](#8-working-with-integration-testing)
+    - 8.1. [Integration Test-Setup](#81-integration-test-setup)
+    - 8.2. [Integration Test-Generating setup code](#82-integration-test-generating-setup-code)
+    - 8.3. [ATB Angular TestBed](#83-atb-angular-testbed)
+    - 8.4. [Integration Test-Property binding](#84-integration-test-property-binding)
+    - 8.5. [Integration Test-Event binding](#85-integration-test-event-binding)
+    - 8.6. [fixture detectChanges](#86-fixture-detectchanges)
+    - 8.7. [Integration Test-Providing dependencies](#87-integration-test-providing-dependencies)
+    - 8.8. [Testing OnInit ngOnInit](#88-testing-onInit-ngOnInit)
+    - 8.9. [Why do we use NO ERRORS SCHEMA](#89-why-do-we-use-no-errors-schema)
+    - 8.10. [Why do we use NO_CUSTOM_SCHEMA](#810-why-do-we-use-no-custom-schema)
+
+???. [Angular Testing Resources](#???-angular-testing-resources)
+
+<!-- - 6.6. [Unit Testing-Components](#66-unit-testing-components)
+ - 6.7. [Unit Testing-Services](#67-unit-testing-services)
+- Spies
+
+- Angular Testing Utilities - TestBed
+
+ -->
+
 1 Introduction to Automated testing
 =====================
 
@@ -129,17 +151,19 @@ Topics included/covered
 - Testing is the process of checking the code/functionality manually or in an automated fashion
 - Automated testing is `process/practice of writing code to test our code`, then run tests in an automated fashion
 - Automated testing is performed by writing test cases/scripts
+  - `Manual Testing` is performed by a human carefully executing the test steps
+  - `Automation Testing` means using an automation tool to execute your test case suite
 
 1.4. Is it a replacement for manual testing
 ---------------------
 1.4. Development and Testing Life cycle
 ---------------------
 
-Both Manual Testing & Automated Testing have their advantages and disadvantages. 
-- For smaller applications, Manual Testing is beneficial at the same time 
-- Large enterprise applications Automated Testing play an important role 
+Both Manual Testing & Automated Testing have their advantages and disadvantages: 
+- For `smaller applications`, Manual Testing is beneficial at the same time 
+- `Large enterprise applications` Automated Testing plays an important role 
 - Some project/software application (in which requirements changes frequently, R & D Projects) Manual Testing is the best option
-- Also in some project/software application combination of both Manual Testing & Automated Testing works and fit fine (complex things checked manually and dynamic things can be automated tested)
+- Also in some project/software application combination of both Manual Testing & Automated Testing works and fit fine (`complex things checked manually and dynamic things can be automated tested`)
 
 ### Manual Testing Process Life cycle
 1. **<u>Code</u>** - We Develop some code/features
@@ -154,11 +178,11 @@ Both Manual Testing & Automated Testing have their advantages and disadvantages.
 3. **<u>Test</u>** - We can Automate and Simply Tests 
  - We can test some part manually
  - At the same time write test cases/automate some task to avoid manual and time-consuming interaction
- - Automate testing helps to get breaking changes/last-minute code shocking changes at the initial level itself
+ - `Automate testing helps to get breaking changes/last-minute code shocking changes at the initial level itself`
 
 Whenever we develop any application we need to test it. Sometimes the test is performed manually by developer/QA team member or at a time we prefer writing an Automated Unit Test.
 
-Test-Driven Development is a single powerful tool to prevent bugs, defects from within our application. By putting some efforts on Testing we get better quality software with fewer bugs which is more maintainable in the long term.
+`Test Driven Development is a single powerful tool to prevent bugs, defects from within our application`. By putting some efforts on Testing we get better quality software with fewer bugs which is more maintainable in the long term.
 
 ### Manual testing process/steps
 1. Launch application in the browser
@@ -169,8 +193,16 @@ Test-Driven Development is a single powerful tool to prevent bugs, defects from 
 
 `All the way manual testing is pretty time consuming, to follow all the steps/cycle discussed above, we may need a couple of minutes.`
 
+- Manual Testing of all workflows, all fields, all negative scenarios is time and money consuming
+- It is difficult to test for multi-lingual sites manually
+- Manual Testing can become boring and hence error-prone.
+
 ### Automated testing process/steps
 `We can write code, directly call the function with different positive and negative input values, and test functionality/function in a fraction of the moment.`
+
+- Automation increases the speed of test execution
+- Automation helps increase Test Coverage
+- Automation does not require human intervention. You can run automated test unattended (overnight)
 
 1.5. Codebase to develope
 ---------------------
@@ -216,6 +248,7 @@ Its fact that implementing the feature with unit test/testing will take more tim
 
 1.6. Why Test
 ---------------------
+
 Testing is important and done to:
 - Get an error if code break
 - Avoid last-minute shocking/breaking code changes
@@ -229,7 +262,8 @@ Testing is important and done to:
 
 1.7. Benefits-Advantages of Automated Testing
 ---------------------
-- It helps to catch defects/bugs before releasing your application/product/software
+
+- `It helps to catch defects/bugs before releasing your application/product/software`
 - With Automated Testing, we produce software with fewer bugs and of better quality and more reliable
 - Tests prevent software defects
 - It will help you become a better developer
@@ -247,9 +281,9 @@ Testing is important and done to:
 
 ### Be Linguistics and Pragmatic:
 - Automated testing has lots of advantages-benefits but it is not good-fit for each project and every team
-- Needed disciplined code and programmer in team else we need to spend more time and money to fix broken code which may result in loss
+- `Needed disciplined code and programmer` in team else we need to spend more time and money to fix broken code which may result in loss
 - In the Real world, we have constrained for TIME and MONEY - our job is to build + deliver real working software by solving problems and deliver values to the world
-- Depends on the Project Budget, Development Time and Resources we can decide to go for Automated Testing or not
+- `Depends on the Project Budget, Development Time and Resources we can decide to go for Automated Testing or not`
 
 ### Automated Testing may not good for:
 - A startup who have limited budget and time
@@ -257,20 +291,48 @@ Testing is important and done to:
 - Companies who develop research-based/experimental products (R & D projects)
 - Software/application in which requirements changes frequently
 
-1.9. First code or write the test
+1.9. First code or write the test TDD BDD
 ---------------------
 1.9. Do I write Test first (TDD - Test Driven Development) or application code first?
 ---------------------
-- **TDD (Test Driven Development)** - Sometimes, we write tests before we even start developing which is called TDD (Tests are written before the code)
-- We mostly follow BDD (Behavior Driven Development) since we are using jasmine framework
+
+- **TDD (Test Driven Development)** 
+  - Sometimes, we write tests before we even start developing which is called TDD (Tests are written before the code)
+  - We mostly follow BDD (Behavior Driven Development) since we are using jasmine framework
+
+- **Behavior Driven Development** 
+  - Behavior Driven testing is an extension of TDD 
+  - Like TDD in BDD also we can write tests first and then add application code, **The major difference that we get to see here are:**
+    - `Tests are written in plain descriptive English type grammar`
+    - Tests are explained as a behavior of an application and are more user focused
+    - Using examples to clarify requirements
+
+This difference brings in the need to have a language which can define, in an understandable format.
 
 Its all depends on TIME, MONEY and need/requirements - usually, developers and companies first prefer to do application development then go for testing ie. BDD (Behavior Driven Development).
 
+
 1.10. What to test
 ---------------------
+1.10. Which Test Cases to Automate?
+---------------------
+
+**Test cases to be automated can be selected using the following criterion to increase the automation ROI:**
+
+- High Risk - Business Critical test cases
+- Test cases that are repeatedly executed
+- Test Cases that are very tedious or difficult to perform manually
+- Time-consuming test Cases
+
 We can write Angular tests cases for testing Functions, Logics, Events, multiple types of Components, Attributes-Directives, Dependencies, Routers- Navigation, and services. 
 
 While writing test we must think/test all execution scenarios like `if and else condition, positive, negative outputs, pass and fail cases, true or false switch case` etc.
+
+**The following category of test cases are not suitable for automation:**
+
+- Test Cases that are newly designed and not executed manually at least once
+- Test Cases for which the requirements are frequently changing
+- Test cases which are executed on an ad-hoc (emergency or when needed) basis
 
 2 Different types of tests
 =====================
