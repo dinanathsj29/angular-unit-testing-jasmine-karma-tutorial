@@ -666,7 +666,7 @@ Here are some of the core test settings/configuration files
 5.1. Clean coding principles-best practices
 ---------------------
 
-- Need to follow clean coding practices for writing code of development as well as test cases:
+- Need to `follow clean coding practices` for writing code of development as well as test cases
  - Small functions/methods (10 lines of code or less)
  - Proper naming conventions for variables and functions/methods (Follow clear and consistent naming conventions for your unit tests)
  - Single responsibility principle (one function should do/perform one task only)
@@ -683,7 +683,7 @@ Here are some of the core test settings/configuration files
 1. Create a new Test file which should have `.spec.ts` extension
     - Every class/component file should have its corresponding Unit Test case file with `.spec.ts` extension 
     - `(e.g.: component = header.component.ts, unit testing/spec file = header.component.spec.ts)`
-2. Angular development team recommends putting unit test scripts alongside the files they are testing and using a `.spec` filename extension to mark it as a testing script (it's a Jasmine convention) 
+2. Angular development team recommends putting/keeping unit test scripts alongside the files they are testing and using a `.spec` filename extension to mark it as a testing script (it's a Jasmine convention) 
     - `header.component.ts, header.component.spec.ts` - should present under one folder
 3. Inside `.spec` test file write Unit Test cases as per logic/functionality mentioned and/or as per specific needs-requirements in the component class file
 4. To run the test cases/test scripts, use Angular CLI command: `ng test`
@@ -711,6 +711,8 @@ describe('Textual description of the group', Function for Jasmine to invoke that
 })
 ```
 
+<hr/>
+
 ### 5.3.2. Unit Test Code
 
 ```
@@ -733,6 +735,36 @@ describe('HeaderComponent', () => {
 })
 ```
 
+<hr/>
+
+### 5.3.3. Simple function to test with jasmine
+
+> **Syntax & Example**: `function.ts:`
+
+```
+function sayHello() {
+
+    return 'Hello World!!!';
+
+}
+```
+
+> **Syntax & Example**: `Jasmine test .spec.ts:`
+
+```
+describe('Say Hello', () => { 
+
+  it('should says Hello World', () => { 
+
+    expect(sayHello()) 
+
+        .toEqual('Hello World!!!'); 
+
+  });
+  
+});
+```
+
 5.4. Widely used Angular Unit Testing functions
 ---------------------
 5.4. Widely used Angular Unit Testing functions / Structure of Unit Test Case:
@@ -743,12 +775,12 @@ describe('HeaderComponent', () => {
 4. Various Matcher functions
 
 ### 5.4.1. describe()
-- Define a test suite (group of related tests)
-- The `describe(string, function)` function defines what we call a Test Suite, a collection of individual Test Specs
+- **`describe() function block define a test suite (group of related tests)`**
+- The `describe(string, function)` function defines what we call a `Test Suite`, a collection of individual `Test Specs`
 - Usually with describe block we define/describe - name of the current component to test
 - e.g. 
  ```
- describe('test-suite-name', () => { 
+ describe('test-suite-name / component-name', () => { 
 
  }) 
 
@@ -760,8 +792,8 @@ describe('HeaderComponent', () => {
  ```
 
 ### 5.4.2. it()
-- Define a individual spec or test
-- The `it(string, function)` function defines an individual Test Spec, this contains one or more Test Expectations
+- **`it() block define a individual spec or test`**
+- The `it(string, function)` function defines an individual `Test Spec`, this contains one or more `Test Expectations`
 - The `it` block must have proper readable and meaningful statement as a Test Spec/description
 - With in `describe()`, we can `have one or more it() functions` - (group of related test/sepc)
 - Inside `it()` block `define test/code behavior` - expectation/assertion
@@ -779,7 +811,7 @@ describe('HeaderComponent', () => {
  ```
 
 ### 5.4.3. expect()
-- Jasmine API for checking expectation/assertion
+- **`expect() function block is Jasmine API for checking expectation/assertion`**
 - The `expect(actual)` expression is what we call an Expectation
 - Takes actual value as the parameter
 - Chained with a Matcher function
@@ -799,10 +831,11 @@ describe('HeaderComponent', () => {
  ```
 
 ### 5.4.4. Various Matcher functions() - Built-in matchers
-- The `matcher(expected)` expression is what we call a Matcher
-- It does a boolean comparison with the `expected` value passed in vs. the `actual` value passed to the `expect` function, if they are false the spec fails
+- **`The matcher(expected) expression is what we call a Matcher`**
+- It does a boolean comparison with the `expected` value passed in VS. the `actual` value passed to the `expect` function if they are false the spec fails
 - It is responsible for reporting to Jasmine if the expectation is true or false, Jasmine will then pass or fail the spec/test
-- Jasmine comes with a rich set of pre-built matchers like:
+- **Jasmine comes with a rich set of pre-built matchers like:**
+
  ```
  expect(array).toContain(member);
  expect(fn).toThrow(string);
