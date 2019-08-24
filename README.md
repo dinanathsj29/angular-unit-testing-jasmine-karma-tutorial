@@ -115,13 +115,6 @@ Topics included/covered
 
 9. [Angular Testing Resources](#9-angular-testing-resources)
 
-<!-- - 6.6. [Unit Testing-Components](#66-unit-testing-components)
- - 6.7. [Unit Testing-Services](#67-unit-testing-services)
-- Spies
-
-- Angular Testing Utilities - TestBed
-
--->
 
 1 Introduction to Automated testing
 =====================
