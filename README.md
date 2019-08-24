@@ -576,19 +576,20 @@ In the current course/tutorial will mainly deal with `Jasmine (to write tests) &
 4.1. Installing tools-utilities
 ---------------------
 
+To create Angular application we need `Node/NPM/Angular CLI` to be installed on the machine, if not then go through following steps and install required tools:
+
 1. Install Node (https://nodejs.org/en)
 2. Install Angular CLI (https://cli.angular.io/) command: `npm install -g @angular/cli` OR `npm i -g @angular/cli`
 3. Create a new Angular project with Angular CLI command: `ng new project/appName` OR `ng new angular-unit-test-demo`
 4. Run Angular App by using Angular CLI command: `ng serve`
 5. To run the test cases/test scripts command: `ng test` 
-   - `ng test` command read all the spec/test files from an application with `.spec` extensions and execute them in serial order
-   - `Karma` launches a headless browser window with port `9876` OR address `http://localhost:9876/?id=96650121` and shows test results and statistics (total test cases run, test pass/fail, etc.)
+    - `ng test` command read all the spec/test files from an application with `.spec` extensions and execute them in serial order
+    - `Karma` launches a headless browser window with port `9876` OR address `http://localhost:9876/?id=96650121` and shows test results and statistics (total test cases run, test pass/fail, etc.)
 
 > **Note**: 
-- We don’t have to set up anything special to start on unit testing, Thanks to `Angular CLI - an Angular Command Line Interface/Utility`
-- Angular CLI creates all the set up (jasmine and karma) for us
-- Any system which has `Node/NPM/Angular CLI` installed, 
- - simply create an Angular App with the command: `ng new appName` and then 
+- We don’t have to set up anything special to start on unit testing, thanks to `Angular CLI - an Angular Command Line Interface/Utility`
+- Angular CLI creates all the set up with packages and dependencies (Jasmine and karma) with `.spec test file` for us
+- Any system which has `Node/NPM/Angular CLI` installed, can simply create an Angular App with the command: `ng new appName` and then 
  - run `ng test` command to start running default tests/test script present in the application in the form of `.spec` files
 
 > **Note**: For detailed description of Node/NPM/Angular/Angular CLI Setup, please refer the following links:
@@ -636,14 +637,14 @@ See the image below which lists all the dependencies installed for testing purpo
 </p>
 
 - **<u>jasmine-core</u>**:
-  - Jasmine is the framework we are going to use to create our tests (`.spec` files consists of jasmine logic)
+  - **`Jasmine is the framework we are going to use to create our tests (.spec files consists of Jasmine logic)`**
   - It has a bunch of functionalities to allow us the write different kinds of tests
 - **<u>karma</u>**:
-  - Karma is a task runner tool for our tests
+  - **`Karma is a task runner tool for our tests`**
   - It uses a configuration file to set the startup file, the reporters, the testing framework, the test output browser
 - **<u>protractor</u>**:
-  - End to End test writer framework
-  - The rest of the dependencies are mainly reporters for our tests, different tools to use karma and jasmine and browser launchers
+  - **`End to End test writing framework`**
+  - The rest of the dependencies are mainly reporters for our tests, different tools to use karma and Jasmine and browser launchers
 
 4.3. Core test setting-configuration files
 ---------------------
