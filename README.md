@@ -2235,6 +2235,24 @@ TestBed.configureTestingModule({
 - If `implements OnInit` or `export class ComponentName implements OnInit` statement is used than only `ngOnInit()` method executes automatically else `ngOnInit()` is normal method present in class
 - When performing testing we need to call `component lifecycle hooks ourselves`, like `ngOnInit()` by ourself as `component.ngOnInit()`, Angular won’t do this for us in the test environment
 
+8.9. Why do we use NO ERRORS SCHEMA
+---------------------
+8.9. Why do we use NO_ERRORS_SCHEMA 
+---------------------
+
+### 8.9.1. What is NO_ERRORS_SCHEMA
+
+Defines a schema that allows any property on any element, so Angular Test ignores any custom elements, attributes in HTML file while testing.
+
+8.10. Why do we use NO CUSTOM SCHEMA
+---------------------
+8.10. Why do we use NO_CUSTOM_SCHEMA
+---------------------
+
+Defines a schema that allows a NgModule to contain the following:
+- Non-Angular elements named with dash case (-)
+- Element properties named with dash case (-). Dash case is the naming convention for custom elements
+
 
 9 Angular Testing Resources
 =====================  
