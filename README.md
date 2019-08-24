@@ -862,9 +862,9 @@ describe('Say Hello', () => {
 
 Till now we know and learned that **Unit testing is nothing but `testing only component class` file without any template/view or external dependencies, with fake services and fake routers. so its time to learn basics-fundamentals to advanced level of unit testing**
 
-***As and when we are running the test, it should run in an isolated mode - as its only test exist in the .spec.ts file***
+**<u>As and when we are running the test, it should run in an isolated mode - as its only test exist in the .spec.ts file</u>**
 
-1. **Comment/Remove old test cases (app.component.spec.ts)** - To avoid any confusion/conflicts with pre-existing tests, please comment/remove all the test cases (3 tests) available in app.component.spec.ts file.
+1. **Comment/Remove old test cases (app.component.spec.ts)** - To avoid any confusion/conflicts with pre-existing tests, please comment/remove all the test cases (3 tests) available in `app.component.spec.ts` file.
 
 6.1. Unit Testing-Functions
 ---------------------
@@ -912,7 +912,7 @@ export class CounterComponent {
 ### 6.1.2. Creating the first test script
 
 1. Create a .spec/test file - `01-counter.spec.ts` and write test case for following scenarios:
-    - if `increaseCounter` function called than `curCounterValue` value will be greater than zero (positive) and 
+    - if `increaseCounter` function called than `curCounterValue` value will be greater than zero (positive) 
 
 > **Syntax & Example**: `01-fundamentals-functions/01-counter.spec.ts` 
 
@@ -967,8 +967,8 @@ describe('CounterComponent', ()=> {
 
 ### 6.1.4. Write and add other test cases in .spec file
 
-4. Write another test case for the negative scenario as:
-    - in case of decreaseCounter function executed curCounterValue value will be less than zero (negative) 
+1. Write another test case for the negative scenario as:
+    - in case of `decreaseCounter` function executed curCounterValue value will be less than zero (negative) 
 
 ```
 it ('should check decremented value is less than zero', ()=> {
@@ -1139,14 +1139,35 @@ describe('DimensionCalculator', () => {
 ---------------------
 6.3. Ignore/prevent unwanted test case to run
 ---------------------
+6.3. Disabled and focused tests
+---------------------
 
-- Test files with extension `.spec.ts` may contain multiple test cases/test scripts, as in current application `01-counter.spec.ts` file have total 2 test cases
+- The `.spec.ts` test file may contain multiple test cases/test scripts, as in current application `01-counter.spec.ts` file has a total 2 test cases. Let's see, learn and deal with required or unwanted test cases:
+
+### 6.3.1. Focused tests / Run a Specific test
+
 - To run a specific test from a bunch of tests cases, one can simply put/use/insert `f` before `it() function block`
 
 ```
 
 fit ('should check incremented value is greater than zero ', ()=> { })
 
+```
+
+- Developer can also focus on specific test suits by pre-pending `f` with `describe()`:
+
+```
+fdescribe('Say Hello', () => { 
+
+  fit('should says Hello World', () => { 
+
+    expect(sayHello()) 
+
+        .toEqual('Hello World!!!'); 
+
+  });
+  
+});
 ```
 
 <p>
@@ -1164,15 +1185,34 @@ fit ('should check incremented value is greater than zero ', ()=> { })
  </figure>
 </p>
 
-- Another way is to put/use/insert `x` before `it() function block`, it will prevent running that particular specs/test scripts
- - In the below scenario, 2nd test case with `x` will be ignored
+### 6.3.2. Disable tests / Ignore test
+
+- To disable test put/use/insert `x` before `it() function block`, it will prevent running that particular specs/test scripts
+    - In the below scenario, 2nd test case with `x` will be ignored/disabled
 
 ```
 
 it ('should check incremented value is greater than zero ', ()=> { })
 
+
 xit ('should check decremented value is less than zero ', ()=> { })
 
+```
+
+- The developer can easily disable test suit or tests without commenting them out but by just pre-pending `x to the describe` or `it functions`:
+
+```
+xdescribe('Say Hello', () => { 
+
+  xit('should says Hello World', () => { 
+
+    expect(sayHello()) 
+
+        .toEqual('Hello World!!!'); 
+
+  });
+  
+});
 ```
 
 > **Note**: We can use `f` and `x` even with `describe() block` to run specific test suit or to ignore unwanted test suit
@@ -1196,9 +1236,10 @@ xit ('should check decremented value is less than zero ', ()=> { })
 6.4. Unit Testing-Strings
 ---------------------
 
-> **Note: What to test?** 
- - With Strings and Arrays dont write very specific/fragile unit test case (with .`toBe()` matcher function) - if specific string not availble it may break easily 
- - instead, its advisable to use `.toContain()` matcher function - to check availability of particuler text/string
+> **Note: What to test?**
+- Just check availability `.toContain()` of particuler text/string
+- With Strings and Arrays dont write very specific/fragile unit test case (with .`toBe()` matcher function) - if specific string not availble then it may break easily 
+- instead, its advisable to use `.toContain()` matcher function - to check availability of particuler text/string
 
 > **Syntax & Example**: `04-strings/01-string-greetings.ts`
 
@@ -1314,6 +1355,54 @@ Jasmine has a few functions we can use to make the activities named setup and te
     - This function is called after each test specification has been run
     - Runs after each test and is used for the `teardown` part of a test
 
+> **Syntax & Example**: `06-setup-and-teardown/01-setup-teardown-beforeall-afterall.ts`
+
+```
+
+export function sayHello() {
+
+  return 'Hello World!!!';
+
+}
+
+```
+
+> **Syntax & Example**: `06-setup-and-teardown/06-setup-and-teardown/01-setup-teardown-beforeall-afterall.spec.ts`
+
+```
+// import component to test 
+import { sayHello } from "./02-setup-teardown-beforeall-afterall";
+
+// 1. describe - define test suite, Create a group of specs (often called a suite)
+describe('Say Hello', () => {
+
+  let expectedResult = '';
+
+  // setup - initialize objects and variables
+  beforeEach(() => {
+    expectedResult = 'Hello World!!!';
+    console.log('setup beforeEach', expectedResult);
+  })
+
+  // teardown - reset object/variable value
+  afterEach(() => {
+    expectedResult = '';
+    console.log('teardown afterEach', expectedResult);
+  })
+
+  // 2. it - define an individual unit test case
+  it('should says Hello World', () => {
+
+    // 3. expect - Create an expectation/assertion for a spec
+    expect(sayHello()) 
+
+        .toEqual(expectedResult); 
+
+  })
+
+}) // describe
+```
+
 ### 6.6.2. Tripple A - AAA - 3A - Arrang, Act and Assert pattern/structure
 
 The `AAA (Arrange, Act, Assert) pattern/structure` is a common way of writing unit tests for a method under test. It suggests that you should divide your test method into three sections: `arrange, act and assert`. It also makes the test more clean and readable.
@@ -1342,7 +1431,7 @@ The `AAA (Arrange, Act, Assert) pattern/structure` is a common way of writing un
 
 <hr/>
 
-> **Syntax & Example**: `06-setup-and-teardown/01-counter.ts`
+> **Syntax & Example**: `06-setup-and-teardown/02-counter.ts`
 
 ```
 export class CounterComponent {
@@ -1372,7 +1461,7 @@ export class CounterComponent {
 
 <hr/>
 
-> **Syntax & Example**: `06-setup-and-teardown/0101-basic-simple-counter.spec.ts`
+> **Syntax & Example**: `06-setup-and-teardown/0201-basic-simple-counter.spec.ts`
 
 ```
 import { CounterComponent } from "./01-counter";
@@ -1404,7 +1493,7 @@ describe('BasicSimplefCounterComponent', () => {
 
 <hr/>
 
-> **Syntax & Example**: `06-setup-and-teardown/0102-aaa-arrange-act-assert-counter.spec.ts`
+> **Syntax & Example**: `06-setup-and-teardown/0202-aaa-arrange-act-assert-counter.spec.ts`
 
 ```
 import { CounterComponent } from "./01-counter";
@@ -1442,14 +1531,14 @@ describe('ArrangeActAssertCounterComponent', () => {
 
 <hr/>
 
-> **Syntax & Example**: `06-setup-and-teardown/0103-setup-teardown-counter.spec.ts`
+> **Syntax & Example**: `06-setup-and-teardown/0203-setup-teardown-counter.spec.ts`
 
-> **Note**: To follow Setup and TearDown methodology we can remove the common code from `it block` and put in the body of test suit ie. `inside describe block`
+> **Note**: To follow Setup and TearDown methodology we can remove the common/repetitive code from `it() block` and put in the body of test suit ie. `inside describe() block`
 
 ```
 import { CounterComponent } from "./01-counter";
 
-fdescribe('SetupTearDownCounterComponent', () => { 
+describe('SetupTearDownCounterComponent', () => { 
 
  // Arrange - dependency injection
  let counterComponent: CounterComponent;
@@ -1502,11 +1591,11 @@ export class LoginFormComponent {
 
  constructor(loginFB: FormBuilder) {
 
- this.loginForm = loginFB.group({
+  this.loginForm = loginFB.group({
 
- name: ['', Validators.required],
- password: ['', Validators.minLength(8)],
- email: ['', Validators.email]
+  name: ['', Validators.required],
+  password: ['', Validators.minLength(8)],
+  email: ['', Validators.email]
  
  })
 
@@ -1575,7 +1664,7 @@ describe('LoginFormComponent', () => {
 }) 
 ```
 
-6.8. Unit Testing-Event Emitters
+6.8. Unit Testing-Event Emitters <!-- ??? -->
 ---------------------
 
 > **Note: What to test?**
@@ -1644,7 +1733,7 @@ describe('EventCounterComponent', () => {
 ---------------------
 There are some limitations with unit tests:
 - `Routers` (Not able to cover with Unit Test. we need to load component in Angular environment so need to follow Integration testing)
-- `Template interpolation and binding` (With a Unit test, not sure properties binded properly in the template )
+- `Template interpolation and binding` (With a Unit test, not sure properties bound properly in the template )
 - `Event Handlers` (click event or so)
 - Unit testing `can't be expected to catch every error` in a program
 - It is `not possible to evaluate all execution paths` even in the most trivial/small programs
