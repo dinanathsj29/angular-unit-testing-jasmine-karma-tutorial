@@ -2226,6 +2226,15 @@ TestBed.configureTestingModule({
 
 > **Note**: If dependencies are not provided properly than we get `Error: No provider for service!`. In the case of component, dependencies can be added at either Module level or Component level.
 
+8.8. Testing OnInit ngOnInit
+---------------------
+8.8. Getting dependencies
+---------------------
+
+- In Angular application, `ngOnInit` method is called by Angular automatically at the time of component initialization
+- If `implements OnInit` or `export class ComponentName implements OnInit` statement is used than only `ngOnInit()` method executes automatically else `ngOnInit()` is normal method present in class
+- When performing testing we need to call `component lifecycle hooks ourselves`, like `ngOnInit()` by ourself as `component.ngOnInit()`, Angular won’t do this for us in the test environment
+
 
 9 Angular Testing Resources
 =====================  
