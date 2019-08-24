@@ -1992,6 +1992,223 @@ Component fixture class is a wrapper around component with this we can:
 - we can also run change detection manually, and 
 - we can also get one or more injected dependencies in this component
 
+8.4. Integration Test-Property binding
+---------------------
+
+> **Note: What to test?** 
+- All types of bindings: `property binding, class binding, style binding, event binding`
+- Property binding: `{{ totalCount }}` or interpolation or some value-class property binding render accurately
+- Class binding: some classes like `[class.highlighted]` conditionally applied correctly
+- Component object: `Component object initialized`/created properly
+- Event binding: Methods like `(click)="upCount()"` invoked flawlessly
+
+> **Syntax & Example**: `02-integration-test/01-property-binding/counter-property-binding.component.html`
+
+```
+
+<div class="counter-container">
+
+    <span class="icon-menu-up count-button" [class.highlighted]="myCount == 1" (click)="upCount()">
+        Up Count
+    </span>
+
+    <!-- <span class="totalCountText">Total: {{ totalVotes }}</span> -->
+    Total:
+    <span class="totalCountText">{{ totalCounts }}</span>
+
+    <span class="icon-menu-down count-button" [class.highlighted]="myCount == -1" (click)="downCount()">
+        Down Count
+    </span>
+
+</div>
+
+```
+
+<hr/>
+
+> **Syntax & Example**: `02-integration-test/01-property-binding/counter-property-binding.component.ts`
+
+```
+
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'app-counter-property-binding',
+  templateUrl: './counter-property-binding.component.html',
+  styleUrls: ['./counter-property-binding.component.css']
+})
+
+export class CounterPropertyBindingComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  @Input() othersCount = 0;
+  @Input() myCount = 0;
+
+  @Output() count = new EventEmitter();
+
+  upCount() {
+    if (this.myCount == 1)
+      return;
+
+    this.myCount++;
+
+    this.count.emit({ myCount: this.myCount });
+  }
+
+  downCount() {
+    if (this.myCount == -1)
+      return;
+
+    this.myCount--;
+
+    this.count.emit({ myCount: this.myCount });
+  }
+
+  get totalCounts(): number {
+    return this.othersCount + this.myCount;
+  }
+
+}
+
+```
+
+<hr/>
+
+> **Syntax & Example**: `02-integration-test/01-property-binding/counter-property-binding.component.spec.ts`
+
+```
+
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from "@angular/platform-browser";
+
+import { CounterPropertyBindingComponent } from './counter-property-binding.component';
+
+describe('CounterPropertyBindingComponent', () => {
+  let component: CounterPropertyBindingComponent;
+  let fixture: ComponentFixture<CounterPropertyBindingComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [CounterPropertyBindingComponent]
+    })
+      .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(CounterPropertyBindingComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create CounterPropertyBindingComponent', () => {
+    expect(component).toBeTruthy();
+  });
+
+  /* binding property - interpolation */
+  it('should bind-show-render totalCount', () => {
+    component.othersCount = 10
+    component.myCount = 5;
+    fixture.detectChanges();
+
+    let totalCountTextElement = fixture.debugElement.queryAll(By.css('span'));
+    let totalCountTextNativeElement: HTMLElement = totalCountTextElement[1].nativeElement;
+
+    expect(totalCountTextNativeElement.getAttribute('class')).toBe('totalCountText');
+    // expect(totalCountTextNativeElement.innerText).toContain(15);
+
+  });
+
+  /* binding style/class */
+  it('should highlight the upCount button if totalCounts is 1', () => {
+    component.myCount = 1;
+    fixture.detectChanges();
+
+    let upCountButtonElement = fixture.debugElement.query(By.css('.icon-menu-up.count-button'));
+
+    expect(upCountButtonElement.classes['highlighted']).toBeTruthy();
+
+  });
+
+  /* binding event */
+  it('should increase totalCounts by 1 when upCount button clicked', () => {
+    let upCountButtonElement = fixture.debugElement.query(By.css('.icon-menu-up.count-button'));
+    
+    upCountButtonElement.triggerEventHandler('click', null);
+  
+    // component.upCount();
+
+    expect(component.totalCounts).toEqual(1);
+
+  });
+
+});
+
+```
+
+8.5. Integration Test-Event binding
+---------------------
+
+> **Syntax & Example**: `event-binding.component.spec.ts`
+
+```
+
+/* binding event */
+it('should increase totalCounts by 1 when upCount button clicked', () => {
+  let upCountButtonElement = fixture.debugElement.query(By.css('.icon-menu-up.count-button'));
+  
+  upCountButtonElement.triggerEventHandler('click', null);
+
+  // component.upCount();
+
+  expect(component.totalCounts).toEqual(1);
+
+});
+
+```
+
+8.6. fixture detectChanges 
+---------------------
+8.6. fixture.detectChanges()
+---------------------
+- In Angular application whenever we make any changes in DOM element, Angular runs its `change Detection` algorithm automatically
+- **Note**: In a testing environment, Angular does not run the `change Detection` algorithm automatically so we need to explicitly/manually call it by using `fixture.detectChanges();`
+- In a testing environment, Angular doesn't automatically bind the component's properties with the template elements.
+    - You have to explicitly call `fixture.detectChanges()` every time you want to `bind a component property with the template`
+    - `fixture.detectChanges()` is called to `update the DOM with the new values`
+- We use `fixture.detectChanges` to instruct Angular to `run change detection` before doing our assertions with Jasmine’s `expect`
+- By using the `ATB = Angular TestBed` and `fixtures` we can inspect the components view through `fixture.debugElement` and also trigger a change detection run by calling `fixture.detectChanges()`
+- When we create a component on the TestBed, Angular does not automatically initiate change detection which means that our `template will not be rendered with its bindings evaluated`
+    - This simply means that `we need to manually trigger change detection` thankfully our handy `component fixture` makes this easy
+    - Whenever we want to trigger change detection, we just need to call `fixture.detectChanges` either at the bottom of our `beforeEach` block or in every test cases
+
+> **Syntax & Example**: `fixture.detectChanges()` 
+
+```
+
+it('should highlight the upCount button if totalCounts is 1', () => {
+    component.myCount = 1;
+    fixture.detectChanges();
+
+    let upCountButtonElement = fixture.debugElement.query(By.css('count-button'));
+
+    expect(upCountButtonElement.classes['highlighted']).toBeTruthy();
+
+});
+
+it('should have a title Welcome to Angular Testing', () => {
+    component.title = 'Welcome to Angular Testing';
+
+    fixture.detectChanges();
+
+    expect(element.textContent).toContain(component.title);
+
+})
+
+```
 
 9 Angular Testing Resources
 =====================  
