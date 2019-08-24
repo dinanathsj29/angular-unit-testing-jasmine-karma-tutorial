@@ -54,6 +54,7 @@ The primary focus for this tutorial is testing Angular Applications and code so 
 
 Topics included/covered
 =====================
+
 1. [Introduction to Automated testing](#1-introduction-to-automated-testing)
     - 1.1. [Common questions in mind of developers](#11-common-questions-in-mind-of-developers)
     - 1.2. [Developers thoughts](#12-developers-thoughts)
@@ -113,6 +114,14 @@ Topics included/covered
     - 8.10. [Why do we use NO_CUSTOM_SCHEMA](#810-why-do-we-use-no-custom-schema)
 
 9. [Angular Testing Resources](#9-angular-testing-resources)
+
+<!-- - 6.6. [Unit Testing-Components](#66-unit-testing-components)
+ - 6.7. [Unit Testing-Services](#67-unit-testing-services)
+- Spies
+
+- Angular Testing Utilities - TestBed
+
+-->
 
 1 Introduction to Automated testing
 =====================
@@ -326,6 +335,7 @@ While writing test we must think/test all execution scenarios like `if and else 
 - Test Cases for which the requirements are frequently changing
 - Test cases which are executed on an ad-hoc (emergency or when needed) basis
 
+
 2 Different types of tests
 =====================
 
@@ -402,11 +412,13 @@ The testing thumb-rule/testing pyramid says that: `75-80 % of the tests should b
 
 > **Note**: Write more Unit and Integration Test, few/less End-to-End tests only for key functionalities
 
+
 3 The Angular Testing Tools-Toolchain
 =====================
 
 3.1. Testing Tool categories
 ---------------------
+
 Angular testing toolchain consist of various tools of different types/categories, which can perform unit testing on Angular Framework. Some of the tools categories mentioned below:
 
 - **<u>Assertion Library</u>**: 
@@ -424,6 +436,10 @@ Angular testing toolchain consist of various tools of different types/categories
 
 3.2. Testing Tools
 ---------------------
+
+We can test our Angular applications from scratch by writing and executing pure javascript functions. Creating instances of the relevant classes, calling functions and checking the actual versus expected result.
+
+But as testing is such a common activity with javascript there are several testing libraries/frameworks available to use which reduce the amount of time it takes to write tests.
 
 Here is the list of important tools used for Angular testing:
 
@@ -445,7 +461,7 @@ Here is the list of important tools used for Angular testing:
 
 ### 3.2.1. Jasmine
 
-- Jasmine is an `open source Behavior Driven Development (BDD) framework for testing JavaScript code, BDD is an important feature of Test Driven Development (TDD)`
+- **`Jasmine is an open-source Behavior Driven Development (BDD) framework for testing JavaScript code, BDD is an important feature of Test Driven Development (TDD)`**
 - Jasmine is the most popular JavaScript testing framework in the Angular community - core framework to write a unit test
 - Angular is built-in with Jasmine and Karma so it's pretty easy to get started with testing
 - Jasmine provides bunch of functions to write test, e.g. `describe()`, `it()` etc.
@@ -459,12 +475,12 @@ Here is the list of important tools used for Angular testing:
 </p>
 
 ### 3.2.2. Karma
-- A `test runner tool for running and executing unit test` while developing an Angular app
+- **`A test runner tool for running and executing unit test while developing an Angular app`**
 - Karma is a direct product of the AngularJS team and default test runner for applications created with the Angular CLI
-- Shows the outcome of all test run whether to pass or fail
-- Karma allows us to generate various reports on the results
+- Shows the `outcome of all test` run whether to pass or fail
+- Karma allows us to `generate various reports on the results`
 - Increases developer productivity by showing/giving live results of tests
-- Karma is a tool which let's use Chrome, Firefox or provides headless browsers and run Jasmine tests inside of them
+- Karma is a tool which let's use `Chrome, Firefox or provides headless browsers` and run Jasmine tests inside of them
 - Website URL: https://karma-runner.github.io/latest/index.html
 
 <p>
@@ -474,7 +490,7 @@ Here is the list of important tools used for Angular testing:
 </p>
 
 ### 3.2.3. Protractor
-- Protractor is an `End-to-End/End-2-End (E2E) behavior-driven testing framework` for Angular
+- **`Protractor is an End-to-End/End-2-End (E2E) behavior-driven testing framework for Angular`**
 - It helps QA or Testers to write and run End-to-End/End-2-End (E2E) to test complete application flow
 - It Explores the app as users experience it
 - Website URL: https://www.protractortest.org/#/
@@ -486,7 +502,7 @@ Here is the list of important tools used for Angular testing:
 </p>
 
 ### 3.2.4. PhantomJS
-- PhantomJS is a `headless WebKit scriptable browser with a JavaScript API`
+- **`PhantomJS is a headless WebKit scriptable browser with a JavaScript API`**
 - It has fast and native support for various web standards like DOM handling, CSS selector, JSON, Canvas, and SVG
 - PhantomJS - Scriptable Headless Browser, in simple terms we can say - PhantomJS is a web browser `without a graphical user interface`
 - PhantomJS can be used to take screenshots of websites, those screenshots can be rendered in different formats also
@@ -495,7 +511,7 @@ Here is the list of important tools used for Angular testing:
 - Website URL: https://phantomjs.org/
 
 ### 3.2.5. Istanbul
-- Angular uses Istanbul and Karma for built-in testing
+- **`Angular uses Istanbul and Karma for built-in testing`**
 - `Istanbul is a Karma reporter` that uses the latest Istanbul 1.x APIs (with full source map support) to report coverage
 - Website URL: 
   - https://www.npmjs.com/package/istanbul, 
@@ -508,7 +524,7 @@ Here is the list of important tools used for Angular testing:
 </p>
 
 ### 3.2.6. Sinon
-- `Standalone test spies, stubs and mocks` for JavaScript (fake service/HTTP-API calls)
+- **`Standalone test spies, stubs and mocks for JavaScript (fake service/HTTP-API calls)`**
 - It works with any unit testing framework and has no external dependencies
 - **Installation command**: `npm install sinon`
 - Jasmine already consists of `spies, Mock`, just a thought from some community that Sinon.JS is better!
@@ -521,7 +537,7 @@ Here is the list of important tools used for Angular testing:
 </p>
 
 ### 3.2.7. Chai
-- `Chai is a BDD / TDD assertion library` for node and the browser that can be delightfully paired with any javascript testing framework
+- **`Chai is a BDD / TDD assertion library for node and the browser that can be delightfully paired with any javascript testing framework`**
 - `Chai is an assertion library with some tasty syntax sugar` that can be paired with any other testing framework
 - Jasmine already uses a TDD style, so developers using Chai for its BDD interfaces, mainly through the use of `should` and `expect`
 - **Installation command**: `npm install chai`
@@ -536,7 +552,7 @@ Here is the list of important tools used for Angular testing:
 </p>
 
 ### 3.2.8. Mocha
-- `A test runner tool for running and executing unit test` while developing an Angular app
+- **`A test runner tool for running and executing unit test while developing an Angular app`**
 - Mocha is a testing framework that provides functions that are executed according to in a specific order, and that logs their results to the terminal window
 - Mocha makes synchronous and asynchronous testing simple and fun, also runs test serially, allowing for flexible and accurate reporting
 - **Installation command**: `npm install mocha`
@@ -546,13 +562,13 @@ Here is the list of important tools used for Angular testing:
 
 ### 3.2.9. Angular Testing Utilities
 - Help us to create a test environment for the complete/whole application code 
-- Used to cover/test iteractions and functionality as a whole
+- Used to cover/test interactions and functionality as a whole
 - Angular **`TestBed`** utility / Angular Test Bed (ATB):
   - The first and most important inbuilt testing utility which creates an angular testing module
   - Used to test interaction between - component and its template or with different component
   - **Package/Import statement** - `import { TestBed } from '@angular/core/testing';`
 
-In the current course/tutorial will mainly deal with `Jasmine (to write tests) & Karma (to run the test and get results/code coverage reports)`.
+In the current course/tutorial will mainly deal with `Jasmine (to write tests) & Karma (to run the test and get results/code coverage reports) with Angular Testbed (ATB - to cover interactions and functionality)`.
 
 4 Setup Angular test
 =====================
