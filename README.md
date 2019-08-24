@@ -69,7 +69,7 @@ Topics included/covered
 2. [Different types of tests](#2-different-types-of-tests)
     - 2.1. [Unit Test](#21-unit-test)
     - 2.2. [Integration Test](#22-integration-test)
-    - 2.3. [End-to-End or End-2-End or E2E Test](#23-end-to-end-test)
+    - 2.3. [End-to-End or End-2-End or E2E Test or Functional Testing](#23-end-to-end-test)
     - 2.4. [The testing pyramid](#24-the-testing-pyramid)
  
 3. [The Angular Testing Tools-Toolchain](#3-the-angular-testing-tools-toolchain)
@@ -112,15 +112,7 @@ Topics included/covered
     - 8.9. [Why do we use NO ERRORS SCHEMA](#89-why-do-we-use-no-errors-schema)
     - 8.10. [Why do we use NO_CUSTOM_SCHEMA](#810-why-do-we-use-no-custom-schema)
 
-???. [Angular Testing Resources](#???-angular-testing-resources)
-
-<!-- - 6.6. [Unit Testing-Components](#66-unit-testing-components)
- - 6.7. [Unit Testing-Services](#67-unit-testing-services)
-- Spies
-
-- Angular Testing Utilities - TestBed
-
- -->
+9. [Angular Testing Resources](#9-angular-testing-resources)
 
 1 Introduction to Automated testing
 =====================
@@ -336,6 +328,7 @@ While writing test we must think/test all execution scenarios like `if and else 
 
 2 Different types of tests
 =====================
+
 There are different ways/types to test our application code. In Angular context, there are following types of test: `isolated and shallow unit testing (without any custom tags), integration tests between components and UI/E2E tests, which can be functional and visual regression testing`. In general, we have 3 types of tests as given below:
 1. Unit Test
 2. Integration Test
@@ -346,7 +339,8 @@ Let's go through each testing type in detail and write the right tests for ensur
 2.1. Unit Test
 ---------------------
 
-- Testing a function in isolation (testing one function, test individual components of the system) 
+- **`Testing a function in isolation (testing one function, test individual components of the system)`**
+- This is sometimes also called `Isolated testing`, It’s the practice of `testing small isolated pieces of code`
 - Test an individual component `in isolation, without external resources` (e.g. file system, server, database, API endpoints, etc.)
 - In Angular terms/context `testing only component class` file without any template/view, with fake services and fake routers
 - **<u>Coverage</u>** - Small Unit/chunk of code to test
@@ -356,20 +350,21 @@ Let's go through each testing type in detail and write the right tests for ensur
 - **<u>Funtionality Testing Confidence</u>** - Does not test the functionality of the application in detail, not give us much confidence about functionality
 
 > **Note**:
- - To perform unit testing for application code, we need to develop a separate program which executes each unit of the software independently, providing proper input data from the source and then checking the output result against the expected results
+ - To perform unit testing for application code, we need to `develop a separate program which executes each unit of the software independently`, providing proper input data from the source and then checking the output result against the expected results
  - Usually, a unit testing program is written with the same programming language in which the actual program/code-logic is developed; e.g. if we develop a program in C#/Java/JavaScript, then we need to develop its related unit testing program in C#/Java/JavaScript respectively
 
 
 <p>
  <figure>
- &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/2.1.1-unit-test.png" alt="Unit Testing" title="Unit Testing" width="600" />
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/2.1.1-unit-test.png" alt="Unit Testing" title="Unit Testing" width="500" />
  <figcaption>&nbsp;&nbsp;&nbsp; Image - Unit Testing</figcaption>
  </figure>
 </p>
 
 2.2. Integration Test
 ---------------------
-- If any Unit testing depends on external resources like databases, networks, and APIs, then it is not a unit test, it's an Integration Test
+
+- **`If any Unit testing depends on external resources like databases, networks, and APIs, then it is not a unit test, it's an Integration Test`**
 - Testing a Component with Template interaction, dependencies (testing a function that calls and depends on another function)
 - In Angular terms/context `testing component along with template (component + template)`, with fake services and fake routers
 - **<u>Coverage</u>** - Test a component `with external resources` (e.g. file system, server, database, API endpoints etc.)
@@ -380,19 +375,21 @@ Let's go through each testing type in detail and write the right tests for ensur
 
 <p>
  <figure>
- &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/2.1.2-integration-test.png" alt="Integration Testing" title="Integration Testing" width="600" />
+ &nbsp;&nbsp;&nbsp; <img src="_images-angular-unit-testing-jasmine-karma/2.1.2-integration-test.png" alt="Integration Testing" title="Integration Testing" width="500" />
  <figcaption>&nbsp;&nbsp;&nbsp; Image - Integration Testing</figcaption>
  </figure>
 </p>
 
 2.3. End to End Test
 ---------------------
-2.3. End-to-End or End-2-End or E2E Test
+2.3. End-to-End or End-2-End or E2E Test or Functional Testing
 ---------------------
 
-- Test an entire application as a whole including function, user interaction, service api calls and complete functionality
-- `Testing and checking application from launching in browser till individual functinality, Full flow (validating a DOM after a click)`
-- **<u>Coverage</u>** - Test whole app functionality, get more confidence about functinality
+- **`Test an entire application as a whole including function, user interaction, service API calls and complete functionality`**
+- This is defined as the testing of the complete functionality of an application
+- End-to-End or Functional Testing simply means interacting with your application as it’s running in a browser just like a user would interact with it in real life, i.e. via clicks on a page, filling up data, etc.
+- `Testing and checking application from launching in browser till individual functionality, Full flow (validating a DOM after a click)`
+- **<u>Coverage</u>** - Test whole app functionality, get more confidence about functionality
 - **<u>Complexity</u>** - Complex
 - **<u>Time/Duration</u>** - Pretty time consuming, Tests are very slow
 - **<u>Frequency</u>** - Write a few (1,2 or so)
@@ -400,9 +397,10 @@ Let's go through each testing type in detail and write the right tests for ensur
 
 2.4. The testing pyramid
 ---------------------
+
 The testing thumb-rule/testing pyramid says that: `75-80 % of the tests should be unit tests, 15-20 % is integration tests and 5 % is End-2-End UI tests`, overall depends on companies to companies, requirements to requirements.
 
-> **Note**: Write more Unit and Integration Test and few/less End-to-End tests only for key functionalities
+> **Note**: Write more Unit and Integration Test, few/less End-to-End tests only for key functionalities
 
 3 The Angular Testing Tools-Toolchain
 =====================
@@ -1708,3 +1706,9 @@ If you load the `coverage/index.html` from this folder in the browser, we can se
 > **Note**: 
 - To verify code coverage report percentage, one can `comment-uncomment` some code from `.spec` files and view the report
 - In code coverage report, `lines marked in GREEN are covered in test` and lines `highlighted in RED are not covered` in the test (no test written for such lines)
+
+9 Angular Testing Resources
+=====================  
+
+> **Reference**: https://angular.io/guide/testing
+
