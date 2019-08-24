@@ -2210,6 +2210,30 @@ it('should have a title Welcome to Angular Testing', () => {
 
 ```
 
+8.7. Integration Test-Providing dependencies
+---------------------
+
+- In case of Unit test, we use to provide dependencies used in constructor as `loginFormComponent = new LoginFormComponent(new FormBuilder);`
+- But for the Integration test, we have to use a different approach as `providers`, the same as we used in module.ts/class files
+- Any external services used at Component level must be added under .spec/test `providers` (in some cases we need to mention Module level dependencies/services also like HTTP or HttpModule)
+
+> **Syntax & Example**: `Providers in Integration test:` 
+
+```
+
+import { Dependency ServicesName } from './path';
+
+TestBed.configureTestingModule({
+    imports: [ Dependency ModuleName, HttpModule ],
+    providers: [ Dependency ServicesName, DataService ],
+    declarations: [ Current ComponentName, Dependency ComponentName, EmployeeComponents ]
+});
+
+```
+
+> **Note**: If dependencies are not provided properly than we get `Error: No provider for service!`. In the case of component, dependencies can be added at either Module level or Component level.
+
+
 9 Angular Testing Resources
 =====================  
 
