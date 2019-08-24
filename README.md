@@ -1851,6 +1851,148 @@ If you load the `coverage/index.html` from this folder in the browser, we can se
 - In code coverage report, `lines marked in GREEN are covered in test` and lines `highlighted in RED are not covered` in the test (no test written for such lines)
 
 
+8 Working with Integration Testing
+=====================
+
+8.1. Integration Test-Setup
+---------------------
+
+In a simple isolated unit test, we can create a new component as  `new ComponentName`. But in case of integration test, we need to ask Angular to create an instance of the component with `TestBed` utility. `TestBed` class provides various utility methods to deal with test cases.
+
+> **Syntax & Example**: Basic setup to write integration tests - `name.component.spec.ts`
+
+```
+import { TestBed, ComponentFixture } from '@angular/core/testing';
+
+  describe('test-suite-group-name', () => {
+
+    let component: ComponentName;
+    let fixture: ComponentFixture<ComponentName>;
+
+    beforeEach( () => {
+
+    // create a dynamic module and put component inside dynamic module
+    TestBed.configureTestingModule({
+        
+      imports: [ Dependency ModuleName, ],
+      providers: [ Dependency ServicesName ],
+      declarations: [ Current ComponentName, Dependency ComponentName ]
+
+    });
+
+    fixture = TestBed.createComponent(ComponentName);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+
+  })
+
+})
+```
+
+8.2. Integration Test-Generating setup code
+---------------------
+8.2. Integration Test-Generating setup code with Angular CLI
+---------------------
+
+Creating an integration .spec test file every time manually is pretty time consuming also there are chances of an error. It is advisable to `use Angular CLI to generate components/services/directives/routings, etc.` as Angular CLI generates basic setup code respective to component/test/.spec files.
+
+Angular CLI command to generate component: 
+- `ng generate component component-name` OR
+- ng g c component-name
+
+(which generates 4 files: `.ts, .html, .css, .spec file` with some basic setup/scaffolding code)
+
+> **Syntax & Example**: Default code in `app.component.spec.ts`
+
+```
+import { TestBed, async } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [
+        AppComponent
+      ],
+    }).compileComponents();
+  }));
+
+  it('should create the app', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  }));
+
+  it(`should have as title 'app'`, async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    // expect(app.title).toEqual('app');
+    expect(app.title).toEqual('angular-unit-test-demo!');
+  }));
+
+  it('should render title in a h1 tag', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to angular-unit-test-demo!');
+  }));
+  
+});
+```
+
+8.3. ATB Angular TestBed
+---------------------
+
+### 8.3.1. What is ATB Angular TestBed?
+
+- `TestBed` is the `primary API for writing unit tests` for Angular applications and libraries
+- `TestBed` is the basic building block of the angular testing module also the main utility available for Angular-specific testing 
+- `TestBed` class provides various utility methods to deal with test cases
+- `Configures and initializes environment for unit testing` and provides methods for creating components and services in unit tests
+- The Angular Test Bed (ATB) is a `higher level Angular Only testing framework` that allows us to easily test behaviors that depend on the Angular Framework
+- Angular TestBed provides slightly easier way/methods/utilities to create components, handle injection, test asynchronous behavior and interact with our application
+- With the help of various utilities of as mentioned above, it `makes the writing test cases with Jasmine easier`
+- `TestBed.configureTestingModule()` this is where we configure the spec file takes a similar configuration and emulates as `@NgModule`. So, It creates a dynamic testing module and always put this configuration in the `beforeEach()` which runs before every test method
+- Test suite's/test file's `beforeEach()` block consists of `TestBed.configureTestingModule()` which give it an object with similar values as a regular `NgModule` for `declarations`, `providers` and `imports`. We can then chain a call to `compileComponents` to tell Angular to compile the declared components
+- We can create a component fixture with `TestBed.createComponent()`, Fixtures have access to a `debugElement`, which will give you access to the internals of the component fixture
+
+### 8.3.2. When to Use Angular Test Bed?
+
+We need to use the Angular Test Bed process to perform unit testing of the following things:
+
+- Test Bed allows us to test the interaction of a component or directive with its templates
+  - debugElement, nativeElement, triggerEventHandler, classes
+- It also allows us to easily test change the detection mechanism of the Angular
+  - fixture.detectChanges();
+- It also allows us to test the Dependency Injection process 
+  - `providers: [ Dependency ServicesName ],`
+- It allows us to run tests using NgModule configuration, which we use in our application:
+
+```
+
+TestBed.configureTestingModule({    
+
+  imports: [ Dependency ModuleName, ],
+  providers: [ Dependency ServicesName ],
+  declarations: [ Current ComponentName, Dependency ComponentName ]
+
+});
+
+```
+- It allows us to test user interactions including clicks and input field operation
+  - triggerEventHandler
+
+### 8.3.3. Component fixture
+
+We can create a component fixture with `TestBed.createComponent()`, Fixtures have access to a `debugElement`, which will give you access to the internals of the component fixture
+
+Component fixture class is a wrapper around component with this we can: 
+- get an instance of the component, 
+- get DOM elements via nativeElement or debugElement properties, 
+- we can also run change detection manually, and 
+- we can also get one or more injected dependencies in this component
+
+
 9 Angular Testing Resources
 =====================  
 
