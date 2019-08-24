@@ -1657,7 +1657,7 @@ describe('LoginFormComponent', () => {
 }) 
 ```
 
-6.8. Unit Testing-Event Emitters <!-- ??? -->
+6.8. Unit Testing-Event Emitters
 ---------------------
 
 > **Note: What to test?**
