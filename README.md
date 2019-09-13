@@ -15,6 +15,7 @@ Hi All, I'm **`Dinanath Jayaswal, Senior UI/Web Developer and Adobe Certified Ex
 
 Let us dive into a topic which lots of developers/technical professionals are struggling and afraid of - `Testing our code`. In this section, we will learn how to write an automated test for Angular Applications. 
 
+
 Who is this for? 
 ---------------------
 
@@ -115,7 +116,6 @@ Topics included/covered
 
 9. [Angular Testing Resources](#9-angular-testing-resources)
 
-
 1 Introduction to Automated testing
 =====================
 
@@ -176,7 +176,7 @@ Both Manual Testing & Automated Testing have their advantages and disadvantages:
 
 Whenever we develop any application we need to test it. Sometimes the test is performed manually by developer/QA team member or at a time we prefer writing an Automated Unit Test.
 
-`Test Driven Development is a single powerful tool to prevent bugs, defects from within our application`. By putting some efforts on Testing we get better quality software with fewer bugs which is more maintainable in the long term.
+`Test-Driven Development is a single powerful tool to prevent bugs, defects from within our application`. By putting some efforts on Testing we get better quality software with fewer bugs which is more maintainable in the long term.
 
 ### Manual testing process/steps
 1. Launch application in the browser
@@ -292,13 +292,13 @@ Testing is important and done to:
 
 - **TDD (Test Driven Development)** 
   - Sometimes, we write tests before we even start developing which is called TDD (Tests are written before the code)
-  - We mostly follow BDD (Behavior Driven Development) since we are using jasmine framework
+  - We mostly follow BDD (Behavior Driven Development) since we are using the Jasmine framework
 
 - **Behavior Driven Development** 
   - Behavior Driven testing is an extension of TDD 
   - Like TDD in BDD also we can write tests first and then add application code, **The major difference that we get to see here are:**
     - `Tests are written in plain descriptive English type grammar`
-    - Tests are explained as a behavior of an application and are more user focused
+    - Tests are explained as a behavior of an application and are more user-focused
     - Using examples to clarify requirements
 
 This difference brings in the need to have a language which can define, in an understandable format.
@@ -653,6 +653,7 @@ Here are some of the core test settings/configuration files
   - The angular-cli configuration of karma uses the file `test.ts` as the entry point of the tests for the application 
   - This file is required by karma.conf.js and loads recursively all the .spec and framework files
 
+
 5 Fundamentals of Unit Testing
 =====================
 
@@ -686,7 +687,7 @@ Here are some of the core test settings/configuration files
 
 ### 5.3.1. Unit Test Syntax
 
-```
+```typescript
 // 1. describe - define test suite, Create a group of specs (often called a suite)
 
 describe('Textual description of the group', Function for Jasmine to invoke that will define inner suites specs () => {
@@ -708,7 +709,7 @@ describe('Textual description of the group', Function for Jasmine to invoke that
 
 ### 5.3.2. Unit Test Code
 
-```
+```typescript
 // 1. describe - define test suite, Create a group of specs (often called a suite)
 
 describe('HeaderComponent', () => {
@@ -734,7 +735,7 @@ describe('HeaderComponent', () => {
 
 > **Syntax & Example**: `function.ts:`
 
-```
+```typescript
 function sayHello() {
 
     return 'Hello World!!!';
@@ -744,7 +745,7 @@ function sayHello() {
 
 > **Syntax & Example**: `Jasmine test .spec.ts:`
 
-```
+```typescript
 describe('Say Hello', () => { 
 
   it('should says Hello World', () => { 
@@ -768,21 +769,22 @@ describe('Say Hello', () => {
 4. Various Matcher functions
 
 ### 5.4.1. describe()
-- **`describe() function block define a test suite (group of related tests)`**
+- **`describe() function block define a test suite (the group of related tests)`**
 - The `describe(string, function)` function defines what we call a `Test Suite`, a collection of individual `Test Specs`
-- Usually with describe block we define/describe - name of the current component to test
+- Usually, with describe block we define/describe - the name of the current component to test
 - e.g. 
- ```
- describe('test-suite-name / component-name', () => { 
+ 
+```typescript
+describe('test-suite-name / component-name', () => { 
 
- }) 
+}) 
 
- OR 
+OR 
 
- describe('LoginComponent', () => { 
+describe('LoginComponent', () => { 
 
- }) 
- ```
+}) 
+```
 
 ### 5.4.2. it()
 - **`it() block define a individual spec or test`**
@@ -791,17 +793,18 @@ describe('Say Hello', () => {
 - With in `describe()`, we can `have one or more it() functions` - (group of related test/sepc)
 - Inside `it()` block `define test/code behavior` - expectation/assertion
 - e.g. 
- ```
- it('test-spec-name', () => { 
+ 
+```typescript
+it('test-spec-name', () => { 
 
- })
+})
 
- OR 
+OR 
 
- it('should have/show submit button', () => { 
+it('should have/show submit button', () => { 
 
- }) 
- ```
+}) 
+```
 
 ### 5.4.3. expect()
 - **`expect() function block is Jasmine API for checking expectation/assertion`**
@@ -810,18 +813,19 @@ describe('Say Hello', () => {
 - Chained with a Matcher function
 - In conjunction with a `Matcher Function,` it describes an expected piece of behavior in the application
 - e.g. 
- ```
- expect(something).matcherFunction(value expected)
 
- OR 
- 
- expect(var-name).toBe(value);
- expect(var-name).toContain(value);
- expect(var-name).toEqual(value);
- expect(var-name).toBeNull(value);
- expect(var-name).toBeTruthy(value);
- expect(var-name).toBeFalsy(value);
- ```
+```typescript
+expect(something).matcherFunction(value expected)
+
+OR 
+
+expect(var-name).toBe(value);
+expect(var-name).toContain(value);
+expect(var-name).toEqual(value);
+expect(var-name).toBeNull(value);
+expect(var-name).toBeTruthy(value);
+expect(var-name).toBeFalsy(value);
+```
 
 ### 5.4.4. Various Matcher functions() - Built-in matchers
 - **`The matcher(expected) expression is what we call a Matcher`**
@@ -829,26 +833,26 @@ describe('Say Hello', () => {
 - It is responsible for reporting to Jasmine if the expectation is true or false, Jasmine will then pass or fail the spec/test
 - **Jasmine comes with a rich set of pre-built matchers like:**
 
- ```
- expect(array).toContain(member);
- expect(fn).toThrow(string);
- expect(fn).toThrowError(string);
- expect(instance).toBe(instance);
- expect(mixed).toBeDefined();
- expect(mixed).toBeFalsy();
- expect(mixed).toBeNull();
- expect(mixed).toBeTruthy();
- expect(mixed).toBeUndefined();
- expect(mixed).toEqual(mixed);
- expect(mixed).toMatch(pattern);
- expect(number).toBeCloseTo(number, decimalPlaces);
- expect(number).toBeGreaterThan(number);
- expect(number).toBeLessThan(number);
- expect(number).toBeNaN();
- expect(spy).toHaveBeenCalled();
- expect(spy).toHaveBeenCalledTimes(number);
- expect(spy).toHaveBeenCalledWith(...arguments);
- ```
+```typescript
+expect(array).toContain(member);
+expect(fn).toThrow(string);
+expect(fn).toThrowError(string);
+expect(instance).toBe(instance);
+expect(mixed).toBeDefined();
+expect(mixed).toBeFalsy();
+expect(mixed).toBeNull();
+expect(mixed).toBeTruthy();
+expect(mixed).toBeUndefined();
+expect(mixed).toEqual(mixed);
+expect(mixed).toMatch(pattern);
+expect(number).toBeCloseTo(number, decimalPlaces);
+expect(number).toBeGreaterThan(number);
+expect(number).toBeLessThan(number);
+expect(number).toBeNaN();
+expect(spy).toHaveBeenCalled();
+expect(spy).toHaveBeenCalledTimes(number);
+expect(spy).toHaveBeenCalledWith(...arguments);
+```
 
 6 Starting with Unit Testing
 =====================
@@ -868,7 +872,7 @@ Till now we know and learned that **Unit testing is nothing but `testing only co
 
 > **Syntax & Example**: `01-fundamentals-functions/01-counter.ts`
 
-```
+```typescript
 export class CounterComponent {
 
  public counter: number = 0;
@@ -909,7 +913,7 @@ export class CounterComponent {
 
 > **Syntax & Example**: `01-fundamentals-functions/01-counter.spec.ts` 
 
-```
+```typescript
 // import component to test 
 import { CounterComponent } from "./01-counter";
 
@@ -963,7 +967,7 @@ describe('CounterComponent', ()=> {
 1. Write another test case for the negative scenario as:
     - in case of `decreaseCounter` function executed curCounterValue value will be less than zero (negative) 
 
-```
+```typescript
 it ('should check decremented value is less than zero', ()=> {
  
  let counterComponent: CounterComponent = new CounterComponent();
@@ -979,7 +983,7 @@ it ('should check decremented value is less than zero', ()=> {
 
 > **Syntax & Example**: final `01-fundamentals-functions/01-counter.spec.ts` 
 
-```
+```typescript
 // import component to test 
 import { CounterComponent } from "./01-counter";
 
@@ -1035,7 +1039,7 @@ describe('CounterComponent', ()=> {
 
 > **Syntax & Example**: `02-parameterized-functions/01-parameter-counter.ts`
 
-```
+```typescript
 export function counterParameter(num): number {
 
  if (num < 0) {
@@ -1054,7 +1058,7 @@ export function counterParameter(num): number {
 
 > **Syntax & Example**: `02-parameterized-functions/01-parameter-counter.spec.ts`
 
-```
+```typescript
 // import function/component to test 
 import { counterParameter } from "./01-parameter-counter";
 
@@ -1087,7 +1091,7 @@ describe('counterParameter', ()=> {
 
 > **Syntax & Example**: `02-parameterized-functions/02-parameter-dimension-calculator.ts`
 
-```
+```typescript
 export class DimensionCalculator {
 
  public getArea(length: number, width: number): number {
@@ -1105,7 +1109,7 @@ export class DimensionCalculator {
 
 > **Syntax & Example**: `02-parameterized-functions/02-parameter-dimension-calculator.ts`
 
-```
+```typescript
 // import function/component to test 
 import { DimensionCalculator } from "./02-parameter-dimension-calculator";
 
@@ -1141,7 +1145,7 @@ describe('DimensionCalculator', () => {
 
 - To run a specific test from a bunch of tests cases, one can simply put/use/insert `f` before `it() function block`
 
-```
+```typescript
 
 fit ('should check incremented value is greater than zero ', ()=> { })
 
@@ -1149,7 +1153,7 @@ fit ('should check incremented value is greater than zero ', ()=> { })
 
 - Developer can also focus on specific test suits by pre-pending `f` with `describe()`:
 
-```
+```typescript
 fdescribe('Say Hello', () => { 
 
   fit('should says Hello World', () => { 
@@ -1183,7 +1187,7 @@ fdescribe('Say Hello', () => {
 - To disable test put/use/insert `x` before `it() function block`, it will prevent running that particular specs/test scripts
     - In the below scenario, 2nd test case with `x` will be ignored/disabled
 
-```
+```typescript
 
 it ('should check incremented value is greater than zero ', ()=> { })
 
@@ -1194,7 +1198,7 @@ xit ('should check decremented value is less than zero ', ()=> { })
 
 - The developer can easily disable test suit or tests without commenting them out but by just pre-pending `x to the describe` or `it functions`:
 
-```
+```typescript
 xdescribe('Say Hello', () => { 
 
   xit('should says Hello World', () => { 
@@ -1236,7 +1240,7 @@ xdescribe('Say Hello', () => {
 
 > **Syntax & Example**: `04-strings/01-string-greetings.ts`
 
-```
+```typescript
 export function greetingsTo(personName: string) {
 
  return 'Welcome ' + personName;
@@ -1249,7 +1253,7 @@ export function greetingsTo(personName: string) {
 
 > **Syntax & Example**: `04-strings/01-string-greetings.spec.ts`
 
-```
+```typescript
 // import function/component to test 
 import { greetingsTo } from "./01-greetings";
 
@@ -1276,7 +1280,7 @@ describe('GreetingString', () => {
 
 > **Syntax & Example**: `05-arrays/01-array-country.ts`
 
-```
+```typescript
 export function getCountry() {
 
  return ['India', 'Russia', 'Japan', 'israel', 'France'];
@@ -1288,7 +1292,7 @@ export function getCountry() {
 
 > **Syntax & Example**: `05-arrays/01-array-country.spec.ts`
 
-```
+```typescript
 // import function/component to test 
 import { getCountry } from "./01-array-country";
 
@@ -1350,7 +1354,7 @@ Jasmine has a few functions we can use to make the activities named setup and te
 
 > **Syntax & Example**: `06-setup-and-teardown/01-setup-teardown-beforeall-afterall.ts`
 
-```
+```typescript
 
 export function sayHello() {
 
@@ -1362,7 +1366,7 @@ export function sayHello() {
 
 > **Syntax & Example**: `06-setup-and-teardown/06-setup-and-teardown/01-setup-teardown-beforeall-afterall.spec.ts`
 
-```
+```typescript
 // import component to test 
 import { sayHello } from "./02-setup-teardown-beforeall-afterall";
 
@@ -1413,20 +1417,22 @@ The `AAA (Arrange, Act, Assert) pattern/structure` is a common way of writing un
   - The fact to check/test
   - The `Assert section verifies` that the action of the method under test behaves as expected
 
- ```
- expect(var-name).toBe(value);
- expect(var-name).toContain(value);
- expect(var-name).toEqual(value);
- expect(var-name).toBeNull(value);
- expect(var-name).toBeTruthy(value);
- expect(var-name).toBeFalsy(value);
- ```
+```typescript
+
+expect(var-name).toBe(value);
+expect(var-name).toContain(value);
+expect(var-name).toEqual(value);
+expect(var-name).toBeNull(value);
+expect(var-name).toBeTruthy(value);
+expect(var-name).toBeFalsy(value);
+
+```
 
 <hr/>
 
 > **Syntax & Example**: `06-setup-and-teardown/02-counter.ts`
 
-```
+```typescript
 export class CounterComponent {
 
  public counter: number = 0;
@@ -1456,7 +1462,7 @@ export class CounterComponent {
 
 > **Syntax & Example**: `06-setup-and-teardown/0201-basic-simple-counter.spec.ts`
 
-```
+```typescript
 import { CounterComponent } from "./01-counter";
 
 describe('BasicSimplefCounterComponent', () => {
@@ -1488,7 +1494,7 @@ describe('BasicSimplefCounterComponent', () => {
 
 > **Syntax & Example**: `06-setup-and-teardown/0202-aaa-arrange-act-assert-counter.spec.ts`
 
-```
+```typescript
 import { CounterComponent } from "./01-counter";
 
 describe('ArrangeActAssertCounterComponent', () => {
@@ -1528,7 +1534,7 @@ describe('ArrangeActAssertCounterComponent', () => {
 
 > **Note**: To follow Setup and TearDown methodology we can remove the common/repetitive code from `it() block` and put in the body of test suit ie. `inside describe() block`
 
-```
+```typescript
 import { CounterComponent } from "./01-counter";
 
 describe('SetupTearDownCounterComponent', () => { 
@@ -1575,7 +1581,7 @@ describe('SetupTearDownCounterComponent', () => {
 
 > **Syntax & Example**: `07-forms/01-loginform.component.ts`
 
-```
+```typescript
 import { FormBuilder, FormGroup, Validator, Validators } from "@angular/forms";
 
 export class LoginFormComponent {
@@ -1601,7 +1607,7 @@ export class LoginFormComponent {
 
 > **Syntax & Example**: `07-forms/01-loginform.component.spec.ts`
 
-```
+```typescript
 import { LoginFormComponent } from "./01-loginform.component";
 
 import { FormBuilder } from "@angular/forms";
@@ -1657,7 +1663,7 @@ describe('LoginFormComponent', () => {
 }) 
 ```
 
-6.8. Unit Testing-Event Emitters
+6.8. Unit Testing-Event Emitters <!-- ??? -->
 ---------------------
 
 > **Note: What to test?**
@@ -1665,7 +1671,7 @@ describe('LoginFormComponent', () => {
 
 > **Syntax & Example**: `08-event-emitter/01-event-emitter-count.component.ts`
 
-```
+```typescript
 import { EventEmitter } from "@angular/core";
 
 export class EventCounterComponent {
@@ -1688,7 +1694,7 @@ export class EventCounterComponent {
 
 > **Syntax & Example**: `08-event-emitter/01-event-emitter-count.component.spec.ts`
 
-```
+```typescript
 import { EventCounterComponent } from "./01-event-emitter-count.component";
 
 describe('EventCounterComponent', () => { 
@@ -1732,7 +1738,6 @@ There are some limitations with unit tests:
 - It is `not possible to evaluate all execution paths` even in the most trivial/small programs
 - Unit testing focuses on a unit of code, hence it `can't catch integration errors` or broad system-level errors
 
-
 7 Code coverage
 =====================
 
@@ -1746,7 +1751,7 @@ There are some limitations with unit tests:
 - The `thresholds` property will enforce a minimum of `80%` code coverage when the unit tests are run in the project
 
 
-```
+```typescript
 
 coverageIstanbulReporter: {
  dir: require('path').join(__dirname, '../coverage'),
@@ -1769,7 +1774,7 @@ coverageIstanbulReporter: {
 
 - If you want to `create code-coverage reports every time you test`, you can set the following option in the CLI configuration file, `angular.json`: This will produce code coverage results whenever tests are run for the project
 
-```
+```typescript
 "test": {
  "options": {
  "codeCoverage": true
@@ -1843,7 +1848,6 @@ If you load the `coverage/index.html` from this folder in the browser, we can se
 - To verify code coverage report percentage, one can `comment-uncomment` some code from `.spec` files and view the report
 - In code coverage report, `lines marked in GREEN are covered in test` and lines `highlighted in RED are not covered` in the test (no test written for such lines)
 
-
 8 Working with Integration Testing
 =====================
 
@@ -1854,7 +1858,7 @@ In a simple isolated unit test, we can create a new component as  `new Component
 
 > **Syntax & Example**: Basic setup to write integration tests - `name.component.spec.ts`
 
-```
+```typescript
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 
   describe('test-suite-group-name', () => {
@@ -1897,7 +1901,7 @@ Angular CLI command to generate component:
 
 > **Syntax & Example**: Default code in `app.component.spec.ts`
 
-```
+```typescript
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
@@ -1961,7 +1965,7 @@ We need to use the Angular Test Bed process to perform unit testing of the follo
   - `providers: [ Dependency ServicesName ],`
 - It allows us to run tests using NgModule configuration, which we use in our application:
 
-```
+```typescript
 
 TestBed.configureTestingModule({    
 
@@ -1985,6 +1989,7 @@ Component fixture class is a wrapper around component with this we can:
 - we can also run change detection manually, and 
 - we can also get one or more injected dependencies in this component
 
+
 8.4. Integration Test-Property binding
 ---------------------
 
@@ -1997,7 +2002,7 @@ Component fixture class is a wrapper around component with this we can:
 
 > **Syntax & Example**: `02-integration-test/01-property-binding/counter-property-binding.component.html`
 
-```
+```typescript
 
 <div class="counter-container">
 
@@ -2021,7 +2026,7 @@ Component fixture class is a wrapper around component with this we can:
 
 > **Syntax & Example**: `02-integration-test/01-property-binding/counter-property-binding.component.ts`
 
-```
+```typescript
 
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
@@ -2073,7 +2078,7 @@ export class CounterPropertyBindingComponent implements OnInit {
 
 > **Syntax & Example**: `02-integration-test/01-property-binding/counter-property-binding.component.spec.ts`
 
-```
+```typescript
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from "@angular/platform-browser";
@@ -2147,7 +2152,7 @@ describe('CounterPropertyBindingComponent', () => {
 
 > **Syntax & Example**: `event-binding.component.spec.ts`
 
-```
+```typescript
 
 /* binding event */
 it('should increase totalCounts by 1 when upCount button clicked', () => {
@@ -2180,7 +2185,7 @@ it('should increase totalCounts by 1 when upCount button clicked', () => {
 
 > **Syntax & Example**: `fixture.detectChanges()` 
 
-```
+```typescript
 
 it('should highlight the upCount button if totalCounts is 1', () => {
     component.myCount = 1;
@@ -2212,7 +2217,7 @@ it('should have a title Welcome to Angular Testing', () => {
 
 > **Syntax & Example**: `Providers in Integration test:` 
 
-```
+```typescript
 
 import { Dependency ServicesName } from './path';
 
@@ -2226,6 +2231,7 @@ TestBed.configureTestingModule({
 
 > **Note**: If dependencies are not provided properly than we get `Error: No provider for service!`. In the case of component, dependencies can be added at either Module level or Component level.
 
+
 8.8. Testing OnInit ngOnInit
 ---------------------
 8.8. Getting dependencies
@@ -2234,6 +2240,38 @@ TestBed.configureTestingModule({
 - In Angular application, `ngOnInit` method is called by Angular automatically at the time of component initialization
 - If `implements OnInit` or `export class ComponentName implements OnInit` statement is used than only `ngOnInit()` method executes automatically else `ngOnInit()` is normal method present in class
 - When performing testing we need to call `component lifecycle hooks ourselves`, like `ngOnInit()` by ourself as `component.ngOnInit()`, Angular won’t do this for us in the test environment
+
+<!-- ??? -->
+
+If Module level dependencies used in `module.ts` as: `providers: []` than write test case as `it('should load todos from the server', () => { let loginService = TestBed.get(LoginService)})`
+
+> **Syntax & Example**: `module level service dependencies inserted under providers arrays` 
+
+```typescript
+@NgModule({
+    imports: [ 
+        CommonModule
+        ],
+    providers: [
+        LoginService,
+        AuthenticationService,
+    ]
+    declarations: [ LoginComponent ]
+})
+
+```
+
+To get dependencies used at component level write test case as `it('should load todos from the component', () => { let loginService = fixture.debugElement.injector.get(LoginService)})`
+
+```typescript
+@Component({
+  selector: 'login-component',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
+  providers: [LoginService, AuthenticationService]
+
+})
+```
 
 8.9. Why do we use NO ERRORS SCHEMA
 ---------------------
@@ -2244,18 +2282,44 @@ TestBed.configureTestingModule({
 
 Defines a schema that allows any property on any element, so Angular Test ignores any custom elements, attributes in HTML file while testing.
 
-8.10. Why do we use NO CUSTOM SCHEMA
----------------------
-8.10. Why do we use NO_CUSTOM_SCHEMA
----------------------
+https://medium.com/bb-tutorials-and-thoughts/angular-a-comprehensive-guide-to-unit-testing-with-angular-and-best-practices-e1f9ef752e4e <!-- ??? -->
 
-Defines a schema that allows a NgModule to contain the following:
-- Non-Angular elements named with dash case (-)
-- Element properties named with dash case (-). Dash case is the naming convention for custom elements
+Let’s run the npm test and we would see a bunch of errors because of nesting components. since the app component has other components inside such as header, footer, and add-item.component, etc.. We have to declare those in the app.component.spec.ts file `TestBed.configureTestingModule()` blocks `declarations` array
 
+Another way is to use `NO_ERRORS_SCHEMA` which tell angular `“Angular, please ignore all the unrecognized tags while testing app.component”`
 
-9 Angular Testing Resources
-=====================  
+> **Syntax & Example**: `schemas: [ NO_ERRORS_SCHEMA ]` 
 
-> **Reference**: https://angular.io/guide/testing
+```typescript
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
+beforeEach(async(() => {
+
+  TestBed.configureTestingModule({
+
+    declarations: [ ComponentName ],
+
+    schemas: [ NO_ERRORS_SCHEMA ]
+
+  }).compileComponents();
+
+}));
+
+```
+
+### 8.9.2. Why you shouldn’t use NO_ERRORS_SCHEMA in Angular Unit Tests
+
+`NO_ERRORS_SCHEMA` simply telling the TestBed to ignore any template errors. 
+So, while testing when it hits `<header-component>` tag, you don’t have to import `HeaderComponent` into your TestBed in your spec file. Angular will just treat that tag like any old div and continue on its way. In the above example, you don’t need to import any of the child components as well as custom components of ParentComponent.
+
+However, there’s a big gotcha! and thing to understand for everyone is that: it also will `ignore unknown attributes; both property bindings and event handlers`. Here is an example:
+
+```typescript
+
+<footer [checking]="testing" (customClicked)="onClick($event)"> </footer>
+
+```
+
+Now let us discuss the problem - The bindings in FooterComponent are to `[checking]` and (customClicked) not `click`. But the `unit tests will still compile! They’ll even run!`. 
+
+`ng build --prod` will catch the property binding problem, `[checking]`, but will not catch the misnamed (customClicked) handler. The only way to find that one is in integration testing! so overpowering `NO_ERRORS_SCHEMA` could be causing damage.
